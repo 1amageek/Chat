@@ -20,14 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             debugPrint(exception.reason ?? "")
             debugPrint(exception.callStackSymbols)
         }
-        let navigationController: UINavigationController = UINavigationController(rootViewController: ViewController())
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
+//        let navigationController: UINavigationController = UINavigationController(rootViewController: ViewController())
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window?.rootViewController = navigationController
+//        self.window?.makeKeyAndVisible()
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        let notification: Notification = Notification(name: Notification.Name(rawValue: "mssgr.oauth.notification"), object: nil, userInfo: ["mssgr.callback.key": url])
+        NotificationCenter.default.post(notification)
         
         return true
     }
-
-
 }
-

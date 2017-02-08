@@ -13,19 +13,26 @@
 		122696011E4060FD006128D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122696001E4060FD006128D9 /* ViewController.swift */; };
 		122696061E4060FD006128D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122696051E4060FD006128D9 /* Assets.xcassets */; };
 		122696091E4060FD006128D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 122696071E4060FD006128D9 /* LaunchScreen.storyboard */; };
-		1226960F1E406123006128D9 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122695D61E40275E006128D9 /* Chat.swift */; };
-		122696101E406123006128D9 /* ChatToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122695D81E402B99006128D9 /* ChatToolBar.swift */; };
-		122696111E406123006128D9 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270A1E21E3F357E0037B2E9 /* ChatView.swift */; };
-		122696121E406123006128D9 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270A1E41E3F358F0037B2E9 /* ChatViewController.swift */; };
-		122696131E406123006128D9 /* ChatViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12881F741E3FA652004107CF /* ChatViewDataSource.swift */; };
-		122696141E406123006128D9 /* ChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270A1E61E3F359D0037B2E9 /* ChatViewCell.swift */; };
-		122696151E406123006128D9 /* Transcript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12881F761E3FA70D004107CF /* Transcript.swift */; };
 		122696161E406608006128D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270A1D01E3F34E00037B2E9 /* AppDelegate.swift */; };
 		122696181E4069A7006128D9 /* MessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122696171E4069A7006128D9 /* MessageViewCell.swift */; };
 		1226961A1E40706E006128D9 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122696191E40706E006128D9 /* Room.swift */; };
 		1226961C1E4071C1006128D9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1226961B1E4071C1006128D9 /* User.swift */; };
-		1226961F1E40746F006128D9 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122696191E40706E006128D9 /* Room.swift */; };
-		122696201E407472006128D9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1226961B1E4071C1006128D9 /* User.swift */; };
+		1255FA831E4AB740001DB587 /* EchoServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1255FA821E4AB740001DB587 /* EchoServer.swift */; };
+		1255FA851E4AB961001DB587 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1255FA841E4AB961001DB587 /* SessionController.swift */; };
+		1264DD9E1E41BDAB003EA514 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264DD9D1E41BDAB003EA514 /* DataSource.swift */; };
+		1264DDA01E41BED6003EA514 /* ChatToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122695D81E402B99006128D9 /* ChatToolBar.swift */; };
+		1264DDA11E41CA7F003EA514 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270A1E21E3F357E0037B2E9 /* ChatView.swift */; };
+		1264DDA51E41D01A003EA514 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264DDA41E41D01A003EA514 /* Message.swift */; };
+		1264DDA71E41D17D003EA514 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264DDA61E41D17D003EA514 /* Session.swift */; };
+		1264DDA91E41D57F003EA514 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264DDA81E41D57E003EA514 /* AccountViewController.swift */; };
+		1264DDAB1E41D5A7003EA514 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1264DDAA1E41D5A7003EA514 /* Account.storyboard */; };
+		1264DDAD1E4415B4003EA514 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264DDAC1E4415B4003EA514 /* User.swift */; };
+		1264DDAF1E441DDA003EA514 /* JSONParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264DDAE1E441DDA003EA514 /* JSONParsable.swift */; };
+		1264DDB11E4454F5003EA514 /* FollowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264DDB01E4454F5003EA514 /* FollowersViewController.swift */; };
+		1264DDB31E4456E1003EA514 /* Followers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1264DDB21E4456E1003EA514 /* Followers.storyboard */; };
+		1264DDB51E4460CC003EA514 /* NextLoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264DDB41E4460CC003EA514 /* NextLoding.swift */; };
+		1264DDB71E447106003EA514 /* TwitterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264DDB61E447106003EA514 /* TwitterError.swift */; };
+		1264DDBA1E48566E003EA514 /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264DDB91E48566E003EA514 /* HMAC.swift */; };
 		1270A1D81E3F34E00037B2E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1270A1D71E3F34E00037B2E9 /* Assets.xcassets */; };
 		1270A1DB1E3F34E00037B2E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1270A1D91E3F34E00037B2E9 /* LaunchScreen.storyboard */; };
 		1270A1E31E3F357E0037B2E9 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270A1E21E3F357E0037B2E9 /* ChatView.swift */; };
@@ -49,6 +56,21 @@
 		122696171E4069A7006128D9 /* MessageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewCell.swift; sourceTree = "<group>"; };
 		122696191E40706E006128D9 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		1226961B1E4071C1006128D9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1255FA821E4AB740001DB587 /* EchoServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EchoServer.swift; sourceTree = "<group>"; };
+		1255FA841E4AB961001DB587 /* SessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
+		1264DD9D1E41BDAB003EA514 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		1264DDA41E41D01A003EA514 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		1264DDA61E41D17D003EA514 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		1264DDA81E41D57E003EA514 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		1264DDAA1E41D5A7003EA514 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		1264DDAC1E4415B4003EA514 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1264DDAE1E441DDA003EA514 /* JSONParsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParsable.swift; sourceTree = "<group>"; };
+		1264DDB01E4454F5003EA514 /* FollowersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersViewController.swift; sourceTree = "<group>"; };
+		1264DDB21E4456E1003EA514 /* Followers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Followers.storyboard; sourceTree = "<group>"; };
+		1264DDB41E4460CC003EA514 /* NextLoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextLoding.swift; sourceTree = "<group>"; };
+		1264DDB61E447106003EA514 /* TwitterError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterError.swift; sourceTree = "<group>"; };
+		1264DDB91E48566E003EA514 /* HMAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
+		1264DDBB1E48572B003EA514 /* TwitterMessenger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwitterMessenger-Bridging-Header.h"; sourceTree = "<group>"; };
 		1270A1CD1E3F34E00037B2E9 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1270A1D01E3F34E00037B2E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1270A1D71E3F34E00037B2E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,11 +113,26 @@
 			isa = PBXGroup;
 			children = (
 				122695FE1E4060FD006128D9 /* AppDelegate.swift */,
+				1264DDB41E4460CC003EA514 /* NextLoding.swift */,
+				1264DDA81E41D57E003EA514 /* AccountViewController.swift */,
+				1264DDAA1E41D5A7003EA514 /* Account.storyboard */,
+				1264DDB01E4454F5003EA514 /* FollowersViewController.swift */,
+				1264DDB21E4456E1003EA514 /* Followers.storyboard */,
 				122696001E4060FD006128D9 /* ViewController.swift */,
+				1255FA841E4AB961001DB587 /* SessionController.swift */,
+				1255FA821E4AB740001DB587 /* EchoServer.swift */,
+				1264DD9D1E41BDAB003EA514 /* DataSource.swift */,
 				122696171E4069A7006128D9 /* MessageViewCell.swift */,
+				1264DDA41E41D01A003EA514 /* Message.swift */,
+				1264DDAC1E4415B4003EA514 /* User.swift */,
+				1264DDB61E447106003EA514 /* TwitterError.swift */,
+				1264DDAE1E441DDA003EA514 /* JSONParsable.swift */,
+				1264DDA61E41D17D003EA514 /* Session.swift */,
+				1264DDB91E48566E003EA514 /* HMAC.swift */,
 				122696051E4060FD006128D9 /* Assets.xcassets */,
 				122696071E4060FD006128D9 /* LaunchScreen.storyboard */,
 				1226960A1E4060FE006128D9 /* Info.plist */,
+				1264DDBB1E48572B003EA514 /* TwitterMessenger-Bridging-Header.h */,
 			);
 			path = TwitterMessenger;
 			sourceTree = "<group>";
@@ -216,6 +253,7 @@
 					122695FB1E4060FD006128D9 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 88ACA86N96;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					1270A1CC1E3F34E00037B2E9 = {
@@ -249,8 +287,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1264DDB31E4456E1003EA514 /* Followers.storyboard in Resources */,
 				122696091E4060FD006128D9 /* LaunchScreen.storyboard in Resources */,
 				122696061E4060FD006128D9 /* Assets.xcassets in Resources */,
+				1264DDAB1E41D5A7003EA514 /* Account.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,18 +403,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				122696141E406123006128D9 /* ChatViewCell.swift in Sources */,
-				122696151E406123006128D9 /* Transcript.swift in Sources */,
+				1264DDB71E447106003EA514 /* TwitterError.swift in Sources */,
+				1255FA831E4AB740001DB587 /* EchoServer.swift in Sources */,
+				1264DD9E1E41BDAB003EA514 /* DataSource.swift in Sources */,
 				122696181E4069A7006128D9 /* MessageViewCell.swift in Sources */,
-				122696131E406123006128D9 /* ChatViewDataSource.swift in Sources */,
-				122696101E406123006128D9 /* ChatToolBar.swift in Sources */,
-				1226960F1E406123006128D9 /* Chat.swift in Sources */,
-				122696121E406123006128D9 /* ChatViewController.swift in Sources */,
+				1264DDA51E41D01A003EA514 /* Message.swift in Sources */,
 				122696011E4060FD006128D9 /* ViewController.swift in Sources */,
-				122696201E407472006128D9 /* User.swift in Sources */,
-				122696111E406123006128D9 /* ChatView.swift in Sources */,
+				1264DDAF1E441DDA003EA514 /* JSONParsable.swift in Sources */,
+				1255FA851E4AB961001DB587 /* SessionController.swift in Sources */,
+				1264DDA11E41CA7F003EA514 /* ChatView.swift in Sources */,
+				1264DDA91E41D57F003EA514 /* AccountViewController.swift in Sources */,
 				122695FF1E4060FD006128D9 /* AppDelegate.swift in Sources */,
-				1226961F1E40746F006128D9 /* Room.swift in Sources */,
+				1264DDA01E41BED6003EA514 /* ChatToolBar.swift in Sources */,
+				1264DDB11E4454F5003EA514 /* FollowersViewController.swift in Sources */,
+				1264DDA71E41D17D003EA514 /* Session.swift in Sources */,
+				1264DDAD1E4415B4003EA514 /* User.swift in Sources */,
+				1264DDBA1E48566E003EA514 /* HMAC.swift in Sources */,
+				1264DDB51E4460CC003EA514 /* NextLoding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,11 +467,15 @@
 			baseConfigurationReference = DF5BAB9FD8F9E5C40655E40F /* Pods-TwitterMessenger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 88ACA86N96;
 				INFOPLIST_FILE = TwitterMessenger/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = team.stamp.TwitterMessenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TwitterMessenger/TwitterMessenger-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -436,11 +485,14 @@
 			baseConfigurationReference = F6221861AF11B03323E02F89 /* Pods-TwitterMessenger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 88ACA86N96;
 				INFOPLIST_FILE = TwitterMessenger/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = team.stamp.TwitterMessenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TwitterMessenger/TwitterMessenger-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

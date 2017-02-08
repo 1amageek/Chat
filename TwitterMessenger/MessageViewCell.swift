@@ -31,9 +31,9 @@ class MessageViewCell: UICollectionViewCell {
         }
     }
     
-    private let contentInset: UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-    private let balloonImageLeft: UIImage = #imageLiteral(resourceName: "bubble-left")
-    private let balloonImageRight: UIImage = #imageLiteral(resourceName: "bubble-right")
+    private let contentInset: UIEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+    private let balloonImageLeft: UIImage = #imageLiteral(resourceName: "left_bubble")
+    private let balloonImageRight: UIImage = #imageLiteral(resourceName: "right_bubble")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,41 +56,51 @@ class MessageViewCell: UICollectionViewCell {
         _ = calculateSize()
     }
     
-    var messageMaxWidth: CGFloat {
+    var balloonMaxWidth: CGFloat {
         return self.bounds.width * 0.65
     }
     
-    let balloonLeftInset: UIEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-    let balloonRightInset: UIEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    let leftMargin: CGFloat = 24
+    let rightMargin: CGFloat = 24
     
     func calculateSize() -> CGSize {
         
         self.dateLabel.sizeToFit()
         
-        let frame: CGRect = CGRect(x: 0, y: 0, width: messageMaxWidth, height: self.bounds.height)
+        let frame: CGRect = CGRect(x: 0, y: 0, width: balloonMaxWidth, height: self.bounds.height)
         let constraintSize: CGSize = UIEdgeInsetsInsetRect(frame, contentInset).size
         let messageLabelSize: CGSize = self.messageLabel.sizeThatFits(constraintSize)
         switch direction {
         case .left:
+            self.messageLabel.textColor = .black
+            let balloonLeftInset: UIEdgeInsets = UIEdgeInsets(top: balloonImageLeft.size.height / 2,
+                                                              left: balloonImageLeft.size.width / 2,
+                                                              bottom: balloonImageLeft.size.height / 2,
+                                                              right: balloonImageLeft.size.width / 2)
             balloonImageView.image = balloonImageLeft.resizableImage(withCapInsets: balloonLeftInset, resizingMode: .stretch)
-            balloonImageView.frame = CGRect(x: contentInset.left,
+            balloonImageView.frame = CGRect(x: leftMargin,
                                             y: 0,
-                                            width: messageMaxWidth + balloonLeftInset.left + balloonLeftInset.right,
+                                            width: messageLabelSize.width + contentInset.left + contentInset.right,
                                             height: self.bounds.height)
-            messageLabel.frame = CGRect(x: balloonImageView.frame.minX + balloonLeftInset.left,
-                                        y: balloonLeftInset.top,
-                                        width: messageMaxWidth,
+            messageLabel.frame = CGRect(x: balloonImageView.frame.minX + contentInset.left,
+                                        y: contentInset.top,
+                                        width: messageLabelSize.width,
                                         height: messageLabelSize.height)
         case .right:
+            self.messageLabel.textColor = .white
+            let balloonRightInset: UIEdgeInsets = UIEdgeInsets(top: balloonImageRight.size.height / 2,
+                                                              left: balloonImageRight.size.width / 2,
+                                                              bottom: balloonImageRight.size.height / 2,
+                                                              right: balloonImageRight.size.width / 2)
             balloonImageView.image = balloonImageRight.resizableImage(withCapInsets: balloonRightInset, resizingMode: .stretch)
-            let balloonImageWidth: CGFloat = messageMaxWidth + balloonRightInset.left + balloonRightInset.right
-            balloonImageView.frame = CGRect(x: self.bounds.width - balloonImageWidth - contentInset.right,
+            let balloonImageWidth: CGFloat = messageLabelSize.width + contentInset.left + contentInset.right
+            balloonImageView.frame = CGRect(x: self.bounds.width - balloonImageWidth - rightMargin,
                                             y: 0,
                                             width: balloonImageWidth,
                                             height: self.bounds.height)
-            messageLabel.frame = CGRect(x: balloonImageView.frame.minX + balloonLeftInset.left,
-                                        y: balloonRightInset.top,
-                                        width: messageMaxWidth,
+            messageLabel.frame = CGRect(x: balloonImageView.frame.minX + contentInset.left,
+                                        y: contentInset.top,
+                                        width: messageLabelSize.width,
                                         height: messageLabelSize.height)
         }
     
