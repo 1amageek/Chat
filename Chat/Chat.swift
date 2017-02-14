@@ -16,7 +16,10 @@ class Chat {
         case image
         case video
         case audio
+        case location
         case sticker
+        case moment
+        case template
     }
     
     enum ChatError: Error {
@@ -42,15 +45,79 @@ class Chat {
     
 }
 
+extension Chat {
+    
+    class User: Object {
+        
+        dynamic var id: String!
+                
+    }
+    
+    class Transcript: Object {
+        
+        dynamic var id: String!
+        
+        /**
+         - SeeAlso: Chat.ContentType
+         */
+        dynamic var contentType: Int = 0
+        dynamic var createdAt: Date = Date()
+        dynamic var updatedAt: Date = Date()
+        
+        dynamic var room: Room?
+        dynamic var from: User?
+        dynamic var text: String?
+        
+        override static func primaryKey() -> String? {
+            return "id"
+        }
+        
+    }
+    
+    class Room: Object {
+        
+        dynamic var id: String!
+        dynamic var createdAt: Date = Date()
+        dynamic var updatedAt: Date = Date()
+        
+        dynamic var name: String!
+        
+        let members: List<Chat.User> = List<Chat.User>()
+        
+        override static func primaryKey() -> String? {
+            return "id"
+        }
+        
+        convenience init(id: String, name: String) {
+            self.init()
+            self.id = id
+            self.name = name
+        }
+    }
+    
+}
+
+extension Chat.Transcript {
+    
+    convenience init(id: String, text: String, from: Chat.User, room: Chat.Room) {
+        self.init()
+        self.id = id
+        self.text = text
+        self.from = from
+        self.room = room
+    }
+    
+}
+
 protocol ChatCommunicable {
     
-    func send(transcript: Transcript, complition: ((Error?) -> Void)?) -> Void
+    func send(transcript: Chat.Transcript, complition: ((Error?) -> Void)?) -> Void
     func receive() -> Void
     
 }
 
 protocol ChatDataSourceProtocol {
     
-    static func sizeForItem(_ transcript: Transcript) -> CGSize
+    static func sizeForItem(_ transcript: Chat.Transcript) -> CGSize
     
 }
