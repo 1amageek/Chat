@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -24,10 +23,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         FIRApp.configure()
+//        try! FIRAuth.auth()?.signOut()
         
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = UINavigationController(rootViewController: RoomViewController())
-        self.window?.makeKeyAndVisible()
+        if let _: FIRUser = FIRAuth.auth()?.currentUser {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = UINavigationController(rootViewController: RoomViewController())
+            self.window?.makeKeyAndVisible()
+        } else {
+            FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
+                if let error: Error = error {
+                    debugPrint(error)
+                    return
+                }
+                let user: Firebase.User = Firebase.User(id: user!.uid)!
+                user.name = "user"
+                user.save({ (ref, error) in
+                    self.window = UIWindow(frame: UIScreen.main.bounds)
+                    self.window?.rootViewController = UINavigationController(rootViewController: RoomViewController())
+                    self.window?.makeKeyAndVisible()
+                })
+            })
+        }                
         
         return true
     }

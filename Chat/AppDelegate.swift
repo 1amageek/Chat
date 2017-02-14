@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,11 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             debugPrint(exception.reason ?? "")
             debugPrint(exception.callStackSymbols)
         }
-        
-        FIRApp.configure()
                         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = UINavigationController(rootViewController: RoomViewController())
+        self.window?.rootViewController = UINavigationController(rootViewController: ChatViewController())
         self.window?.makeKeyAndVisible()
         
         return true

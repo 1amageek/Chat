@@ -244,7 +244,7 @@ open class Datasource<Parent, Child> where Parent: Referenceable, Parent: Salada
      - parameter cascade: Also deletes the data of the reference case of `true`.
      - parameter block: block The block that should be called. If there is an error it returns an error.
      */
-    public func removeObject(at index: Int, cascade: Bool, block: @escaping (Error?) -> Void) {
+    public func removeObject(at index: Int, cascade: Bool, block: @escaping (String, Error?) -> Void) {
         let key: String = self.pool[index]
 
         if cascade {
@@ -253,18 +253,18 @@ open class Datasource<Parent, Child> where Parent: Referenceable, Parent: Salada
 
             self.databaseRef.updateChildValues([parentPath : NSNull(), childPath: NSNull()]) { (error, ref) in
                 if let error: Error = error {
-                    block(error)
+                    block(key, error)
                     return
                 }
-                block(nil)
+                block(key, nil)
             }
         } else {
             self.reference.child(key).removeValue(completionBlock: { (error, ref) in
                 if let error: Error = error {
-                    block(error)
+                    block(key, error)
                     return
                 }
-                block(nil)
+                block(key, nil)
             })
         }
 

@@ -11,7 +11,7 @@ import RealmSwift
 
 class ChatViewController: UIViewController, UICollectionViewDelegate {
     
-    var room: Chat.Room?
+    var room: Room?
     
     override func loadView() {
         super.loadView()
@@ -119,8 +119,8 @@ class ChatViewController: UIViewController, UICollectionViewDelegate {
     
     private(set) var notificationToken: NotificationToken?
     
-    private(set) lazy var transcripts: Results<Chat.Transcript> = {
-        var transcripts: Results<Chat.Transcript> = self.realm.objects(Chat.Transcript.self).sorted(byKeyPath: "createdAt")
+    private(set) lazy var transcripts: Results<Transcript> = {
+        var transcripts: Results<Transcript> = self.realm.objects(Transcript.self).sorted(byKeyPath: "createdAt")
         self.notificationToken = transcripts.addNotificationBlock { [weak self] (changes: RealmCollectionChange) in
             guard let collectionView: ChatView = self?.collectionView else { return }
             switch changes {

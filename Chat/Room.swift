@@ -7,11 +7,25 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Room: Salada.Object {
+class Room: Object {
     
-    dynamic var name: String?
-    dynamic var members: Set<String> = []
-    dynamic var messages: Set<String> = []
+    dynamic var id: String!
+    dynamic var createdAt: Date = Date()
+    dynamic var updatedAt: Date = Date()
     
+    dynamic var name: String!
+    
+    let members: List<User> = List<User>()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    convenience init(id: String, name: String) {
+        self.init()
+        self.id = id
+        self.name = name
+    }
 }

@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import Firebase
+import RealmSwift
 
-class User: Salada.Object {
+class User: Object {
     
-    dynamic var name: String?
-    dynamic var rooms: Set<String> = []
+    dynamic var id: String!
     
 }
