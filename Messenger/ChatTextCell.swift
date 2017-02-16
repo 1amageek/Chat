@@ -132,6 +132,7 @@ class ChatTextRightCell: ChatTextCell {
         self.imageView.layer.cornerRadius = imageViewRadius
         self.balloonView.backgroundColor = UIColor(white: 0.9, alpha: 1)
         self.textLabel.textColor = .black
+        self.nameLabel.isHidden = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -142,13 +143,13 @@ class ChatTextRightCell: ChatTextCell {
         let imageViewDiameter: CGFloat = imageViewRadius * 2
         let constraintSize: CGSize = CGSize(width: textLabelMaximumWidth, height: CGFloat.greatestFiniteMagnitude)
         let textLabelSize: CGSize = textLabel.sizeThatFits(constraintSize)
-        let balloonOriginX: CGFloat = contentInset.left + imageViewDiameter + 8
         let balloonSize: CGSize = CGSize(width: textInset.left + textLabelSize.width + textInset.right, height: textInset.top + textLabelSize.height + textInset.bottom)
+        let balloonOriginX: CGFloat = self.bounds.width - (contentInset.right + imageViewDiameter + 8) - balloonSize.width
         nameLabel.sizeToFit()
         nameLabel.frame = CGRect(x: balloonOriginX, y: contentInset.top, width: nameLabel.bounds.width, height: nameLabel.bounds.height)
-        balloonView.frame = CGRect(x: balloonOriginX , y: nameLabel.frame.maxY, width: balloonSize.width, height: balloonSize.height)
+        balloonView.frame = CGRect(x: balloonOriginX , y: contentInset.top, width: balloonSize.width, height: balloonSize.height)
         textLabel.frame = CGRect(x: balloonView.frame.minX + textInset.left, y: balloonView.frame.minY + textInset.top, width: textLabelSize.width, height: textLabelSize.height)
-        imageView.frame = CGRect(x: contentInset.left, y: balloonView.frame.maxY - imageViewDiameter, width: imageViewDiameter, height: imageViewDiameter)
+        imageView.frame = CGRect(x: self.bounds.width - contentInset.right - imageViewDiameter, y: balloonView.frame.maxY - imageViewDiameter, width: imageViewDiameter, height: imageViewDiameter)
         return CGSize(width: self.bounds.width, height: balloonView.frame.maxY)
     }
     

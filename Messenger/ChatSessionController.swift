@@ -44,7 +44,7 @@ class ChatSessionController {
                 message.roomID = room.id
                 message.text = text
                 message.save({ (ref, error) in
-                    
+                    // TODO: retry function
                 })
                 
             }
