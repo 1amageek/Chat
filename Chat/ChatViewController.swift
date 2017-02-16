@@ -19,10 +19,11 @@ class ChatViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        layoutToolbar()
-        layoutChatView()
+        self.automaticallyAdjustsScrollViewInsets = false
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
+        layoutToolbar()
+        layoutChatView()
         self.collectionView.scrollToBottom(false)
     }
     
@@ -45,15 +46,19 @@ class ChatViewController: UIViewController, UICollectionViewDelegate {
     
     func layoutChatView() {
         var contentInset: UIEdgeInsets = collectionView.contentInset
+        contentInset.top = navigationBarHeight
         contentInset.bottom = toolBarHeight
         collectionView.scrollIndicatorInsets = contentInset
-        
-        contentInset.top += 8
-        contentInset.bottom += 8
+        contentInset.top = navigationBarHeight + 8
+        contentInset.bottom = toolBarHeight + 8
         collectionView.contentInset = contentInset
     }
     
     // Keyboard
+    
+    private var navigationBarHeight: CGFloat {
+        return (self.navigationController?.navigationBar.frame.height ?? 0) + UIApplication.shared.statusBarFrame.height
+    }
     
     private var toolBarHeight: CGFloat {
         return self.keyboardHeight + self.toolBar.bounds.height
