@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import RealmSwift
 
 class ChatViewController: UIViewController, UICollectionViewDelegate {
-    
-    var room: Room?
     
     override func loadView() {
         super.loadView()
@@ -24,6 +21,7 @@ class ChatViewController: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         layoutToolbar()
         layoutChatView()
+        self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
         self.collectionView.scrollToBottom(false)
     }
@@ -48,8 +46,11 @@ class ChatViewController: UIViewController, UICollectionViewDelegate {
     func layoutChatView() {
         var contentInset: UIEdgeInsets = collectionView.contentInset
         contentInset.bottom = toolBarHeight
-        collectionView.contentInset = contentInset
         collectionView.scrollIndicatorInsets = contentInset
+        
+        contentInset.top += 8
+        contentInset.bottom += 8
+        collectionView.contentInset = contentInset
     }
     
     // Keyboard
@@ -113,37 +114,16 @@ class ChatViewController: UIViewController, UICollectionViewDelegate {
         return toolbar
     }()
     
-    // MARK: - Realm
+}
+
+extension ChatViewController: UICollectionViewDelegateFlowLayout {
     
-    let realm = try! Realm()
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
     
-    private(set) var notificationToken: NotificationToken?
-    
-    private(set) lazy var transcripts: Results<Transcript> = {
-        var transcripts: Results<Transcript> = self.realm.objects(Transcript.self).sorted(byKeyPath: "createdAt")
-        self.notificationToken = transcripts.addNotificationBlock { [weak self] (changes: RealmCollectionChange) in
-            guard let collectionView: ChatView = self?.collectionView else { return }
-            switch changes {
-            case .initial:
-                collectionView.reloadData()
-            case .update(_, let deletions, let insertions, let modifications):
-                collectionView.performBatchUpdates({
-                    collectionView.insertItems(at: insertions.map { IndexPath(item: $0, section: 0) })
-                    collectionView.deleteItems(at: deletions.map { IndexPath(item: $0, section: 0) })
-                    collectionView.reloadItems(at: modifications.map { IndexPath(item: $0, section: 0) })
-                }) { (finished) in
-                    collectionView.scrollToBottom(true)
-                }
-            case .error(let error):
-                fatalError("\(error)")
-                break
-            }
-        }
-        return transcripts
-    }()
-    
-    deinit {
-        self.notificationToken?.stop()
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
 }
@@ -157,4 +137,5 @@ extension ChatViewController: UITextViewDelegate {
     func textViewDidChangeSelection(_ textView: UITextView) {
         textView.scrollRangeToVisible(textView.selectedRange)
     }
+    
 }

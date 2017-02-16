@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,8 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         FIRApp.configure()
-//        try! FIRAuth.auth()?.signOut()
-        
+        //try! FIRAuth.auth()?.signOut()
         if let _: FIRUser = FIRAuth.auth()?.currentUser {
             self.window = UIWindow(frame: UIScreen.main.bounds)
             self.window?.rootViewController = UINavigationController(rootViewController: RoomViewController())
@@ -38,9 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let user: Firebase.User = Firebase.User(id: user!.uid)!
                 user.name = "user"
                 user.save({ (ref, error) in
+                    
                     self.window = UIWindow(frame: UIScreen.main.bounds)
                     self.window?.rootViewController = UINavigationController(rootViewController: RoomViewController())
                     self.window?.makeKeyAndVisible()
+
                 })
             })
         }                

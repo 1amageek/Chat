@@ -8,9 +8,11 @@
 
 import Foundation
 import RealmSwift
+import Firebase
 
 class User: Object {
     
     dynamic var id: String!
+    dynamic var name: String?
     
 }

@@ -34,6 +34,7 @@ class Firebase {
         
         typealias Element = Message
         
+        dynamic var roomID: String?
         dynamic var contentType: Int = 0
         dynamic var userID: String?
         dynamic var text: String?

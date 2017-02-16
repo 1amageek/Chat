@@ -20,24 +20,12 @@ class Transcript: Object {
     dynamic var createdAt: Date = Date()
     dynamic var updatedAt: Date = Date()
     
-    dynamic var room: Room?
-    dynamic var from: User?
+    dynamic var roomID: String?
+    dynamic var userID: String?
     dynamic var text: String?
     
     override static func primaryKey() -> String? {
         return "id"
-    }
-    
-}
-
-extension Transcript {
-    
-    convenience init(id: String, text: String, from: User, room: Room) {
-        self.init()
-        self.id = id
-        self.text = text
-        self.from = from
-        self.room = room
     }
     
 }

@@ -7,16 +7,15 @@
 //
 
 import UIKit
-import RealmSwift
 
-extension ChatViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ChatViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.transcripts.count
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

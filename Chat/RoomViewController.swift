@@ -48,55 +48,55 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(addRoom))
         
         
-//        let options: SaladaOptions = SaladaOptions()
-//        options.limit = 30
-//        options.ascending = false
-//        
-//        self.datasource = Datasource(parentKey: user.uid, referenceKey: "rooms", options: options, block: { [weak self](changes) in
-//            guard let tableView: UITableView = self?.tableView else { return }
-//            switch changes {
-//            case .initial:
-//                tableView.reloadData()
-//            case .update(let deletions, let insertions, let modifications):
-//                
-//                insertions.forEach({ (index) in
-//                    self?.datasource?.observeObject(at: index, block: { (room) in
-//                        guard let room: Room = room else {
-//                            return
-//                        }
-//                        print(room)
-//                        try! self?.realm.write {
-//                            let chatRoom: Group = Group(id: room.id, name: room.name!)
-//                            self?.realm.add(chatRoom)
-//                        }
-//                    })
-//                })
-//                
-//                deletions.forEach({ (index) in
-//                    self?.datasource?.removeObject(at: index, cascade: false, block: { (key, error) in
-//                        if let error: Error = error {
-//                            debugPrint(error)
-//                            return
-//                        }
-//                        print(key)
-//                        // TODO: connect Realm
-//                    })
-//                })
-//                
-//                modifications.forEach({ (index) in
-//                    self?.datasource?.observeObject(at: index, block: { (room) in
-//                        guard let room: Room = room else {
-//                            return
-//                        }
-//                        print(room)
-//                        // TODO: Connect Realm
-//                    })
-//                })
-//                
-//            case .error(let error):
-//                print(error)
-//            }
-//        })
+        let options: SaladaOptions = SaladaOptions()
+        options.limit = 30
+        options.ascending = false
+        
+        self.datasource = Datasource(parentKey: user.uid, referenceKey: "rooms", options: options, block: { [weak self](changes) in
+            
+            switch changes {
+            case .initial: break
+                //tableView.reloadData()
+            case .update(let deletions, let insertions, let modifications):
+                
+                insertions.forEach({ (index) in
+                    self?.datasource?.observeObject(at: index, block: { (room) in
+                        guard let room: Firebase.Room = room else {
+                            return
+                        }
+                        print(room)
+                        try! self?.realm.write {
+                            let chatRoom: Room = Room(id: room.id, name: room.name!)
+                            self?.realm.add(chatRoom)
+                        }
+                    })
+                })
+                
+                deletions.forEach({ (index) in
+                    self?.datasource?.removeObject(at: index, cascade: false, block: { (key, error) in
+                        if let error: Error = error {
+                            debugPrint(error)
+                            return
+                        }
+                        print(key)
+                        // TODO: connect Realm
+                    })
+                })
+                
+                modifications.forEach({ (index) in
+                    self?.datasource?.observeObject(at: index, block: { (room) in
+                        guard let room: Firebase.Room = room else {
+                            return
+                        }
+                        print(room)
+                        // TODO: Connect Realm
+                    })
+                })
+                
+            case .error(let error):
+                print(error)
+            }
+        })
         
     }
     
@@ -112,15 +112,17 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RoomViewCell = tableView.dequeueReusableCell(withIdentifier: "RoomViewCell", for: indexPath) as! RoomViewCell
-//        let room: Group = self.rooms[indexPath.item]
-//        cell.title = room.name
+        let room: Room = self.rooms[indexPath.item]
+        cell.title = room.name
         return cell
     }
     
     // MARK: -
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let viewController: MessageViewController = MessageViewController()
+        viewController.room = self.rooms[indexPath.item]
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     // MARK: -
@@ -140,12 +142,10 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private(set) var notificationToken: NotificationToken?
     
-    private(set) lazy var rooms: Results<Group> = {
-        var results: Results<Group> = self.realm.objects(Group.self).sorted(byKeyPath: "createdAt")
-        self.notificationToken = results.addNotificationBlock { [weak self] (changes: RealmCollectionChange) in
-            
+    private(set) lazy var rooms: Results<Room> = {
+        var results: Results<Room> = self.realm.objects(Room.self).sorted(byKeyPath: "createdAt")
+        self.notificationToken = results.addNotificationBlock { [weak self] (changes: RealmCollectionChange) in            
             guard let tableView: UITableView = self?.tableView else { return }
-            
             switch changes {
             case .initial:
                 tableView.reloadData()
