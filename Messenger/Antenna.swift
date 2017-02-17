@@ -15,14 +15,20 @@ import CoreBluetooth
  PeripheralControllerを有し、見つけたPeripheralの制御をします。
  */
 
-let AntennaDidChangeConnectedPeripherals: String = "antenna.did.change.connected.peripherals"
-let AntennaDidChangeConnectedDevices: String = "antenna.did.change.connected.devices"
-let AntennaPeripheralsKey: String = "antenna.peripherals.key"
-let AntennaDevicesKey: String = "antenna.devices.key"
 
 open class Antenna: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Communicable {
     
     static let `default`: Antenna = Antenna()
+    
+    public var readValueBlock: ((CBPeripheral, CBCharacteristic) -> Void)?
+    
+    public var writeValueBlock: ((CBPeripheral, CBCharacteristic) -> Void)?
+    
+    public var changeConnectedPeripheralsBlock: ((Set<CBPeripheral>) -> Void)?
+    
+    public var changeConnectedDevicesBlock: ((Set<Device>) -> Void)?
+    
+    public var createDeviceBlock: ((_ peripheral: CBPeripheral, _ characteristic: CBCharacteristic) -> Device?)?
     
     private let restoreIdentifierKey = "antenna.antenna.restore.key"
     
@@ -42,7 +48,7 @@ open class Antenna: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Co
     private(set) var connectedPeripherals: Set<CBPeripheral> = [] {
         didSet {
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: AntennaDidChangeConnectedPeripherals), object: self, userInfo: [AntennaPeripheralsKey: self.connectedPeripherals])
+                self.changeConnectedPeripheralsBlock?(self.connectedPeripherals)
             }
         }
     }
@@ -56,12 +62,14 @@ open class Antenna: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Co
     var connectedDevices: Set<Device> = [] {
         didSet {
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: AntennaDidChangeConnectedDevices), object: self, userInfo: [AntennaDevicesKey: self.connectedDevices])
+                self.changeConnectedDevicesBlock?(self.connectedDevices)
             }
         }
     }
     
     private var thresholdRSSI: NSNumber?
+    
+    private var allowDuplicates: Bool = false
     
     private var scanOptions: [String: Any]?
     
@@ -78,7 +86,7 @@ open class Antenna: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Co
     }
     
     func applicationWillResignActive() {
-        startScan(thresholdRSSI: self.thresholdRSSI, options: self.scanOptions)
+        // TODO:
     }
     
     override init() {
@@ -93,12 +101,6 @@ open class Antenna: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Co
     
     // MARK - method
     
-    var readValueBlock: ((CBPeripheral, CBCharacteristic) -> Void)?
-    
-    var writeValueBlock: ((CBPeripheral, CBCharacteristic) -> Void)?
-
-    var createDeviceBlock: ((_ peripheral: CBPeripheral, _ characteristic: CBCharacteristic) -> Device?)?
-    
     /**
      Scan
      */
@@ -112,6 +114,7 @@ open class Antenna: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Co
 
     func startScan(thresholdRSSI: NSNumber? = nil, allowDuplicates: Bool = false, options: [String: Any]? = nil) {
         self.thresholdRSSI = thresholdRSSI
+        self.allowDuplicates = allowDuplicates
         if let options: [String: Any] = options {
             self.scanOptions = options
         } else {
@@ -163,7 +166,7 @@ open class Antenna: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Co
     func reScan() {
         self.stopScan()
         self.cleanup()
-        self.startScan(thresholdRSSI: self.thresholdRSSI, options: self.scanOptions)
+        self.startScan(thresholdRSSI: self.thresholdRSSI, allowDuplicates: self.allowDuplicates, options: self.scanOptions)
     }
     
     /// Stop scan
@@ -178,6 +181,10 @@ open class Antenna: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Co
         self.discoveredPeripherals = []
         self.connectedPeripherals = []
         self.connectedDevices = []
+        self.readValueBlock = nil
+        self.writeValueBlock = nil
+        self.changeConnectedPeripheralsBlock = nil
+        self.changeConnectedDevicesBlock = nil
         self.thresholdRSSI = nil
         self.scanOptions = nil
         self.didUpdateValueBlock = nil
