@@ -52,38 +52,60 @@ class MessageViewController: ChatViewController {
         
         self.datasource = Datasource(parentKey: self.room.id, referenceKey: "messages", options: options, block: { [weak self](changes) in
 
+            guard let room: Room = self?.room else { return }
+            
+            let insertBlock = { (index) in
+                self?.datasource?.observeObject(at: index, block: { (message) in
+                    
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    
+                    guard let message: Firebase.Message = message else {
+                        return
+                    }
+                    
+                    guard let userID: String = message.userID else {
+                        return
+                    }
+                    
+                    guard let text: String = message.text else {
+                        return
+                    }
+                    
+                    // すでに持っていれば作らない
+                    if strongSelf.realm.objects(Transcript.self).contains(where: { (transcript) -> Bool in
+                        return transcript.id == message.id
+                    }) {
+                        return
+                    }
+                    
+                    try! self?.realm.write {
+                        
+                        let transcript: Transcript = Transcript()
+                        transcript.id = message.id
+                        transcript.text = text
+                        transcript.roomID = room.id
+                        transcript.userID = userID
+                        self?.realm.add(transcript)
+                    }
+                })
+            }
+            
+            
             switch changes {
-            case .initial: break
+            case .initial:
+                
+                let count: Int = self?.datasource?.count ?? 0
+                (0..<count).forEach({ (index) in
+                    insertBlock(index)
+                })
                 
             case .update(let deletions, let insertions, let modifications):
                 
-                guard let room: Room = self?.room else { return }
                 
                 insertions.forEach({ (index) in
-                    self?.datasource?.observeObject(at: index, block: { (message) in
-                        
-                        guard let message: Firebase.Message = message else {
-                            return
-                        }
-                        
-                        guard let userID: String = message.userID else {
-                            return
-                        }
-                        
-                        guard let text: String = message.text else {
-                            return
-                        }
-                        
-                        try! self?.realm.write {
-                            
-                            let transcript: Transcript = Transcript()
-                            transcript.id = message.id
-                            transcript.text = text
-                            transcript.roomID = room.id
-                            transcript.userID = userID
-                            self?.realm.add(transcript)
-                        }
-                    })
+                    insertBlock(index)
                 })
                 
                 deletions.forEach({ (index) in

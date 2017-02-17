@@ -147,10 +147,6 @@ open class Datasource<Parent, Child> where Parent: Referenceable, Parent: Salada
 
     }
 
-    subscript(index: Int) -> String {
-        return self.pool[index]
-    }
-
     private var isFirst: Bool = false
 
     // Firebase firstKey
@@ -321,4 +317,26 @@ open class Datasource<Parent, Child> where Parent: Referenceable, Parent: Salada
         }
     }
 
+}
+
+extension Datasource: Collection {
+
+    typealias Element = String
+    
+    public var startIndex: Int {
+        return 0
+    }
+    
+    public var endIndex: Int {
+        return self.pool.count
+    }
+    
+    public func index(after i: Int) -> Int {
+        return i + 1
+    }
+    
+    public subscript(index: Int) -> String {
+        return self.pool[index]
+    }
+    
 }

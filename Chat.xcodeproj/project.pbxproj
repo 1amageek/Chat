@@ -46,6 +46,10 @@
 		128EBA0A1E55522B00B56BFB /* ChatSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EBA091E55522B00B56BFB /* ChatSessionController.swift */; };
 		128EBA0C1E556A9600B56BFB /* ChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EBA0B1E556A9600B56BFB /* ChatTextCell.swift */; };
 		128EBA0E1E557E6200B56BFB /* Realm+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EBA0D1E557E6200B56BFB /* Realm+.swift */; };
+		128EBA141E559AD600B56BFB /* Antenna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EBA101E559AD600B56BFB /* Antenna.swift */; };
+		128EBA151E559AD600B56BFB /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EBA111E559AD600B56BFB /* Beacon.swift */; };
+		128EBA161E559AD600B56BFB /* Communicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EBA121E559AD600B56BFB /* Communicable.swift */; };
+		128EBA171E559AD600B56BFB /* Communicable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EBA131E559AD600B56BFB /* Communicable+.swift */; };
 		E95A77A47A867199B113765C /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC136CB7EB7ECF10CC4DA11 /* Pods_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +87,10 @@
 		128EBA091E55522B00B56BFB /* ChatSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSessionController.swift; sourceTree = "<group>"; };
 		128EBA0B1E556A9600B56BFB /* ChatTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTextCell.swift; sourceTree = "<group>"; };
 		128EBA0D1E557E6200B56BFB /* Realm+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+.swift"; sourceTree = "<group>"; };
+		128EBA101E559AD600B56BFB /* Antenna.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Antenna.swift; sourceTree = "<group>"; };
+		128EBA111E559AD600B56BFB /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
+		128EBA121E559AD600B56BFB /* Communicable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Communicable.swift; sourceTree = "<group>"; };
+		128EBA131E559AD600B56BFB /* Communicable+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Communicable+.swift"; sourceTree = "<group>"; };
 		26E6B680EDE0B408982D72AE /* Pods_TwitterMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		489B7665A1F9B3D7B8F72A8D /* Pods-Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.release.xcconfig"; path = "Pods/Target Support Files/Pods-Messenger/Pods-Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		65800436C61FE06F3D8E5CCB /* Pods-Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Messenger/Pods-Messenger.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +144,7 @@
 				128EBA091E55522B00B56BFB /* ChatSessionController.swift */,
 				124AB5EC1E53106400E5FF18 /* Firebase+.swift */,
 				128EBA0D1E557E6200B56BFB /* Realm+.swift */,
+				128EBA0F1E559AB700B56BFB /* Antenna */,
 				124AB5A11E52D8C700E5FF18 /* Salada */,
 				124AB5BC1E52E21700E5FF18 /* Main.storyboard */,
 				124AB5BF1E52E21700E5FF18 /* Assets.xcassets */,
@@ -184,6 +193,17 @@
 				1270A1DC1E3F34E00037B2E9 /* Info.plist */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		128EBA0F1E559AB700B56BFB /* Antenna */ = {
+			isa = PBXGroup;
+			children = (
+				128EBA101E559AD600B56BFB /* Antenna.swift */,
+				128EBA111E559AD600B56BFB /* Beacon.swift */,
+				128EBA121E559AD600B56BFB /* Communicable.swift */,
+				128EBA131E559AD600B56BFB /* Communicable+.swift */,
+			);
+			name = Antenna;
 			sourceTree = "<group>";
 		};
 		37D821324FA432AEDE01F199 /* Pods */ = {
@@ -264,6 +284,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 88ACA86N96;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					1270A1CC1E3F34E00037B2E9 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -414,6 +439,7 @@
 			files = (
 				124AB5DF1E52E53200E5FF18 /* ChatToolBar.swift in Sources */,
 				124AB5E41E52E57F00E5FF18 /* Salada.swift in Sources */,
+				128EBA141E559AD600B56BFB /* Antenna.swift in Sources */,
 				128EBA0A1E55522B00B56BFB /* ChatSessionController.swift in Sources */,
 				124AB5D01E52E24D00E5FF18 /* RoomViewCell.swift in Sources */,
 				124AB5CF1E52E24D00E5FF18 /* RoomViewController.swift in Sources */,
@@ -423,6 +449,7 @@
 				124AB5E01E52E53200E5FF18 /* ChatView.swift in Sources */,
 				124AB5E81E52E57F00E5FF18 /* Referenceable.swift in Sources */,
 				124AB5DE1E52E53200E5FF18 /* Chat.swift in Sources */,
+				128EBA171E559AD600B56BFB /* Communicable+.swift in Sources */,
 				128EBA0C1E556A9600B56BFB /* ChatTextCell.swift in Sources */,
 				124AB5E61E52E57F00E5FF18 /* Salada+Datasource.swift in Sources */,
 				128EBA0E1E557E6200B56BFB /* Realm+.swift in Sources */,
@@ -433,7 +460,9 @@
 				124AB5E51E52E57F00E5FF18 /* Salada+File.swift in Sources */,
 				124AB5E11E52E53200E5FF18 /* ChatViewController.swift in Sources */,
 				124AB5E71E52E57F00E5FF18 /* Salada+Relation.swift in Sources */,
+				128EBA161E559AD600B56BFB /* Communicable.swift in Sources */,
 				124AB5F61E53124000E5FF18 /* User.swift in Sources */,
+				128EBA151E559AD600B56BFB /* Beacon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

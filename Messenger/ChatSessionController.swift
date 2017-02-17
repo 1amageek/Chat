@@ -39,14 +39,23 @@ class ChatSessionController {
                 realm.add(transcript)                
                 block?(nil)
                 
-                let message: Firebase.Message = Firebase.Message(id: ref.key)!
-                message.userID = user.uid
-                message.roomID = room.id
-                message.text = text
-                message.save({ (ref, error) in
-                    // TODO: retry function
+                Firebase.Room.observeSingle(room.id, eventType: .value, block: { (room) in
+                    guard let room: Firebase.Room = room as? Firebase.Room else {
+                        return
+                    }
+                    let message: Firebase.Message = Firebase.Message(id: ref.key)!
+                    message.userID = user.uid
+                    message.roomID = room.id
+                    message.text = text
+                    message.save({ (ref, error) in                        
+                        if let error = error {
+                            debugPrint(error)
+                            return
+                        }
+                        room.messages.insert(ref!.key)
+                    })
                 })
-                
+   
             }
         } catch {
             
