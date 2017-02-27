@@ -98,26 +98,13 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
             let insertBlock = { (index) in
                 self?.datasource?.observeObject(at: index, block: { (room) in
                     
-                    guard let strongSelf = self else {
-                        return
-                    }
-                    
                     guard let room: Firebase.Room = room else {
-                        return
-                    }
-                    
-                    let roomID: String = room.id
-                    
-                    // すでに持っていれば作らない
-                    if strongSelf.realm.objects(Room.self).contains(where: { (room) -> Bool in
-                        return roomID == room.id
-                    }) {
                         return
                     }
                     
                     try! self?.realm.write {
                         let chatRoom: Room = Room(id: room.id, name: room.name!)
-                        self?.realm.add(chatRoom)
+                        self?.realm.add(chatRoom, update: true)
                     }
                 })
             }
@@ -175,9 +162,13 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RoomViewCell = tableView.dequeueReusableCell(withIdentifier: "RoomViewCell", for: indexPath) as! RoomViewCell
+        configure(cell: cell, at: indexPath)
+        return cell
+    }
+    
+    func configure(cell: RoomViewCell, at indexPath: IndexPath) {
         let room: Room = self.rooms[indexPath.item]
         cell.title = room.name
-        return cell
     }
     
     // MARK: -

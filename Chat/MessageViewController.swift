@@ -57,10 +57,6 @@ class MessageViewController: ChatViewController {
             let insertBlock = { (index) in
                 self?.datasource?.observeObject(at: index, block: { (message) in
                     
-                    guard let strongSelf = self else {
-                        return
-                    }
-                    
                     guard let message: Firebase.Message = message else {
                         return
                     }
@@ -73,21 +69,13 @@ class MessageViewController: ChatViewController {
                         return
                     }
                     
-                    // すでに持っていれば作らない
-                    if strongSelf.realm.objects(Transcript.self).contains(where: { (transcript) -> Bool in
-                        return transcript.id == message.id
-                    }) {
-                        return
-                    }
-                    
-                    try! self?.realm.write {
-                        
+                    try! self?.realm.write {                        
                         let transcript: Transcript = Transcript()
                         transcript.id = message.id
                         transcript.text = text
                         transcript.roomID = room.id
                         transcript.userID = userID
-                        self?.realm.add(transcript)
+                        self?.realm.add(transcript, update: true)
                     }
                 })
             }
