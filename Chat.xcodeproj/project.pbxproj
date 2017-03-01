@@ -10,11 +10,6 @@
 		004EE6D7438F0A18E42698FE /* Pods_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49DF17CD7A18B1A75B9AA0B /* Pods_Messenger.framework */; };
 		123C27771E65B11700A2655F /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27761E65B11700A2655F /* Template.swift */; };
 		123C27791E65B26D00A2655F /* TemplateContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27781E65B26D00A2655F /* TemplateContent.swift */; };
-		123C277F1E65B7E600A2655F /* Salada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C277A1E65B7E600A2655F /* Salada.swift */; };
-		123C27801E65B7E600A2655F /* Salada+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C277B1E65B7E600A2655F /* Salada+File.swift */; };
-		123C27811E65B7E600A2655F /* Salada+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C277C1E65B7E600A2655F /* Salada+Datasource.swift */; };
-		123C27821E65B7E600A2655F /* Salada+Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C277D1E65B7E600A2655F /* Salada+Relation.swift */; };
-		123C27831E65B7E600A2655F /* Referenceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C277E1E65B7E600A2655F /* Referenceable.swift */; };
 		123C278D1E65B82B00A2655F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27851E65B82B00A2655F /* CameraViewController.swift */; };
 		123C278E1E65B82B00A2655F /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 123C27861E65B82B00A2655F /* Camera.storyboard */; };
 		123C278F1E65B82B00A2655F /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27871E65B82B00A2655F /* Camera.swift */; };
@@ -24,6 +19,11 @@
 		123C27931E65B82B00A2655F /* Camera+PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C278B1E65B82B00A2655F /* Camera+PreviewView.swift */; };
 		123C27941E65B82B00A2655F /* Camera+TriggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C278C1E65B82B00A2655F /* Camera+TriggerView.swift */; };
 		123C27961E65D71D00A2655F /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27951E65D71C00A2655F /* Transfer.swift */; };
+		123C27AF1E66E47200A2655F /* Salada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27AA1E66E47200A2655F /* Salada.swift */; };
+		123C27B01E66E47200A2655F /* Salada+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27AB1E66E47200A2655F /* Salada+File.swift */; };
+		123C27B11E66E47200A2655F /* Salada+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27AC1E66E47200A2655F /* Salada+Datasource.swift */; };
+		123C27B21E66E47200A2655F /* Salada+Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27AD1E66E47200A2655F /* Salada+Relation.swift */; };
+		123C27B31E66E47200A2655F /* Referenceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27AE1E66E47200A2655F /* Referenceable.swift */; };
 		124AB5B91E52E21700E5FF18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5B81E52E21700E5FF18 /* AppDelegate.swift */; };
 		124AB5BE1E52E21700E5FF18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 124AB5BC1E52E21700E5FF18 /* Main.storyboard */; };
 		124AB5C01E52E21700E5FF18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124AB5BF1E52E21700E5FF18 /* Assets.xcassets */; };
@@ -70,11 +70,6 @@
 		122695D81E402B99006128D9 /* ChatToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatToolBar.swift; sourceTree = "<group>"; };
 		123C27761E65B11700A2655F /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		123C27781E65B26D00A2655F /* TemplateContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateContent.swift; sourceTree = "<group>"; };
-		123C277A1E65B7E600A2655F /* Salada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salada.swift; sourceTree = "<group>"; };
-		123C277B1E65B7E600A2655F /* Salada+File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+File.swift"; sourceTree = "<group>"; };
-		123C277C1E65B7E600A2655F /* Salada+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Datasource.swift"; sourceTree = "<group>"; };
-		123C277D1E65B7E600A2655F /* Salada+Relation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Relation.swift"; sourceTree = "<group>"; };
-		123C277E1E65B7E600A2655F /* Referenceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Referenceable.swift; sourceTree = "<group>"; };
 		123C27851E65B82B00A2655F /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		123C27861E65B82B00A2655F /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		123C27871E65B82B00A2655F /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -84,6 +79,11 @@
 		123C278B1E65B82B00A2655F /* Camera+PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Camera+PreviewView.swift"; sourceTree = "<group>"; };
 		123C278C1E65B82B00A2655F /* Camera+TriggerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Camera+TriggerView.swift"; sourceTree = "<group>"; };
 		123C27951E65D71C00A2655F /* Transfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
+		123C27AA1E66E47200A2655F /* Salada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salada.swift; sourceTree = "<group>"; };
+		123C27AB1E66E47200A2655F /* Salada+File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+File.swift"; sourceTree = "<group>"; };
+		123C27AC1E66E47200A2655F /* Salada+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Datasource.swift"; sourceTree = "<group>"; };
+		123C27AD1E66E47200A2655F /* Salada+Relation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Relation.swift"; sourceTree = "<group>"; };
+		123C27AE1E66E47200A2655F /* Referenceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Referenceable.swift; sourceTree = "<group>"; };
 		124AB5991E52A6D100E5FF18 /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomViewController.swift; path = ../Chat/RoomViewController.swift; sourceTree = "<group>"; };
 		124AB59B1E52AC2100E5FF18 /* RoomViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomViewCell.swift; path = ../Chat/RoomViewCell.swift; sourceTree = "<group>"; };
 		124AB59D1E52CB3300E5FF18 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageViewController.swift; path = ../Chat/MessageViewController.swift; sourceTree = "<group>"; };
@@ -162,11 +162,11 @@
 		124AB5A11E52D8C700E5FF18 /* Salada */ = {
 			isa = PBXGroup;
 			children = (
-				123C277A1E65B7E600A2655F /* Salada.swift */,
-				123C277B1E65B7E600A2655F /* Salada+File.swift */,
-				123C277C1E65B7E600A2655F /* Salada+Datasource.swift */,
-				123C277D1E65B7E600A2655F /* Salada+Relation.swift */,
-				123C277E1E65B7E600A2655F /* Referenceable.swift */,
+				123C27AA1E66E47200A2655F /* Salada.swift */,
+				123C27AB1E66E47200A2655F /* Salada+File.swift */,
+				123C27AC1E66E47200A2655F /* Salada+Datasource.swift */,
+				123C27AD1E66E47200A2655F /* Salada+Relation.swift */,
+				123C27AE1E66E47200A2655F /* Referenceable.swift */,
 			);
 			name = Salada;
 			path = ../Chat;
@@ -482,14 +482,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				123C27B31E66E47200A2655F /* Referenceable.swift in Sources */,
 				124AB5DF1E52E53200E5FF18 /* ChatToolBar.swift in Sources */,
+				123C27B21E66E47200A2655F /* Salada+Relation.swift in Sources */,
 				123C27961E65D71D00A2655F /* Transfer.swift in Sources */,
-				123C27821E65B7E600A2655F /* Salada+Relation.swift in Sources */,
 				128EBA141E559AD600B56BFB /* Antenna.swift in Sources */,
 				128EBA0A1E55522B00B56BFB /* ChatSessionController.swift in Sources */,
 				124AB5D01E52E24D00E5FF18 /* RoomViewCell.swift in Sources */,
 				123C27911E65B82B00A2655F /* Camera+Photo.swift in Sources */,
 				124AB5CF1E52E24D00E5FF18 /* RoomViewController.swift in Sources */,
+				123C27B11E66E47200A2655F /* Salada+Datasource.swift in Sources */,
 				124AB5F41E53124000E5FF18 /* Transcript.swift in Sources */,
 				124AB5ED1E53106400E5FF18 /* Firebase+.swift in Sources */,
 				128EBA191E56F46700B56BFB /* ViewController.swift in Sources */,
@@ -506,16 +508,14 @@
 				124AB5E11E52E53200E5FF18 /* ChatViewController.swift in Sources */,
 				128EBA161E559AD600B56BFB /* Communicable.swift in Sources */,
 				123C278F1E65B82B00A2655F /* Camera.swift in Sources */,
-				123C27831E65B7E600A2655F /* Referenceable.swift in Sources */,
 				123C27941E65B82B00A2655F /* Camera+TriggerView.swift in Sources */,
 				123C27931E65B82B00A2655F /* Camera+PreviewView.swift in Sources */,
 				123C27921E65B82B00A2655F /* Camera+Video.swift in Sources */,
 				124AB5F61E53124000E5FF18 /* User.swift in Sources */,
-				123C27801E65B7E600A2655F /* Salada+File.swift in Sources */,
-				123C27811E65B7E600A2655F /* Salada+Datasource.swift in Sources */,
 				123C27901E65B82B00A2655F /* CapturePhotoDelegate.swift in Sources */,
+				123C27AF1E66E47200A2655F /* Salada.swift in Sources */,
+				123C27B01E66E47200A2655F /* Salada+File.swift in Sources */,
 				123C278D1E65B82B00A2655F /* CameraViewController.swift in Sources */,
-				123C277F1E65B7E600A2655F /* Salada.swift in Sources */,
 				128EBA151E559AD600B56BFB /* Beacon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

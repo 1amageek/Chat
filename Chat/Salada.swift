@@ -186,9 +186,6 @@ public class Salada {
             return tmpID
         }
         
-        /// Upload tasks
-        public var uploadTasks: [String: FIRStorageUploadTask] = [:]
-        
         public var snapshot: FIRDataSnapshot? {
             didSet {
                 if let snapshot: FIRDataSnapshot = snapshot {
@@ -324,15 +321,17 @@ public class Salada {
         
         // MARK: - Save
         
-        public func save() {
-            self.save(nil)
+        @discardableResult
+        public func save() -> [String: FIRStorageUploadTask] {
+            return self.save(nil)
         }
         
         /**
          Save the new Object to Firebase. Save will fail in the off-line.
          - parameter completion: If successful reference will return. An error will return if it fails.
          */
-        public func save(_ completion: ((FIRDatabaseReference?, Error?) -> Void)?) {
+        @discardableResult
+        public func save(_ completion: ((FIRDatabaseReference?, Error?) -> Void)?) -> [String: FIRStorageUploadTask] {
             
             if self.id == self.tmpID || self.id == self._id {
                 
@@ -350,92 +349,183 @@ public class Salada {
                     ref = type(of: self).databaseRef.childByAutoId()
                 }
                 
-                ref.runTransactionBlock({ (data) -> FIRTransactionResult in
-                    
-                    if data.value != nil {
-                        data.value = value
-                        return .success(withValue: data)
+                self.tmpID = ref.key
+                
+                return self.saveFiles(block: { (error) in
+                    if let error = error {
+                        completion?(ref, error)
+                        return
                     }
                     
-                    return .success(withValue: data)
-                    
-                }, andCompletionBlock: { (error, committed, snapshot) in
-                    
-                    type(of: self).databaseRef.child(ref.key).observeSingleEvent(of: .value, with: { (snapshot) in
-                        self.snapshot = snapshot
+                    ref.runTransactionBlock({ (data) -> FIRTransactionResult in
+                        if data.value != nil {
+                            data.value = value
+                            return .success(withValue: data)
+                        }
+                        return .success(withValue: data)
+                    }, andCompletionBlock: { (error, committed, snapshot) in
                         
-                        // File save
-                        self.saveFiles(block: { (error) in
-                            completion?(ref, error as Error?)
+                        type(of: self).databaseRef.child(ref.key).observeSingleEvent(of: .value, with: { (snapshot) in
+                            self.snapshot = snapshot
+                            completion?(ref, error)
                         })
                         
-                    })
-                    
-                }, withLocalEvents: false)
+                    }, withLocalEvents: false)
+                                        
+                })
                 
             } else {
                 let error: ObjectError = ObjectError(kind: .invalidId, description: "It has been saved with an invalid ID.")
                 completion?(nil, error)
+                return [:]
             }
+    
         }
         
         var timeout: Float = 20
         let uploadQueue: DispatchQueue = DispatchQueue(label: "salada.upload.queue")
         
-        private func saveFiles(block: ((Error?) -> Void)?) {
+        private func saveFiles(block: ((Error?) -> Void)?) -> [String: FIRStorageUploadTask] {
             
-            DispatchQueue.global(qos: .default).async {
-                let group: DispatchGroup = DispatchGroup()
-                var uploadTasks: [FIRStorageUploadTask] = []
-                var hasError: Error? = nil
-                let workItem: DispatchWorkItem = DispatchWorkItem {
-                    for (key, value) in Mirror(reflecting: self).children {
-                        
-                        guard let key: String = key else {
-                            break
-                        }
-                        
-                        if self.ignore.contains(key) {
-                            break
-                        }
-                        
-                        let mirror: Mirror = Mirror(reflecting: value)
-                        let subjectType: Any.Type = mirror.subjectType
-                        if subjectType == File?.self || subjectType == File.self {
-                            if let file: File = value as? File {
-                                group.enter()
-                                if let task: FIRStorageUploadTask = file.save(key, completion: { (meta, error) in
-                                    if let error: Error = error {
-                                        hasError = error
-                                        uploadTasks.forEach({ (task) in
-                                            task.cancel()
-                                        })
-                                        group.leave()
-                                        return
-                                    }
-                                    group.leave()
-                                }) {
-                                    uploadTasks.append(task)
-                                }
+            let group: DispatchGroup = DispatchGroup()
+            var uploadTasks: [String: FIRStorageUploadTask] = [:]
+            
+            var hasError: Error? = nil
+            
+            for (key, value) in Mirror(reflecting: self).children {
+                
+                guard let key: String = key else {
+                    break
+                }
+                
+                if self.ignore.contains(key) {
+                    break
+                }
+                
+                let mirror: Mirror = Mirror(reflecting: value)
+                let subjectType: Any.Type = mirror.subjectType
+                if subjectType == File?.self || subjectType == File.self {
+                    if let file: File = value as? File {
+                        group.enter()
+                        if let task: FIRStorageUploadTask = file.save(key, completion: { (meta, error) in
+                            if let error: Error = error {
+                                hasError = error
+                                uploadTasks.forEach({ (_, task) in
+                                    task.cancel()
+                                })
+                                group.leave()
+                                return
                             }
+                            group.leave()
+                        }) {
+                            uploadTasks[key] = task
                         }
                     }
                 }
-                
-                self.uploadQueue.async(group: group, execute: workItem)
+            }
+            
+            DispatchQueue.global(qos: .default).async {
                 group.notify(queue: DispatchQueue.main, execute: {
                     block?(hasError)
                 })
                 switch group.wait(timeout: .now() + Double(Int64(4 * Double(NSEC_PER_SEC)))) {
                 case .success: break
                 case .timedOut:
-                    uploadTasks.forEach({ (task) in
+                    uploadTasks.forEach({ (_, task) in
                         task.cancel()
                     })
                     let error: ObjectError = ObjectError(kind: .timeout, description: "Save the file timeout.")
                     block?(error)
                 }
             }
+                        
+            return uploadTasks
+            
+//            DispatchQueue.global(qos: .default).async {
+//
+//                var hasError: Error? = nil
+//                
+//                for (key, value) in Mirror(reflecting: self).children {
+//                    
+//                    guard let key: String = key else {
+//                        break
+//                    }
+//                    
+//                    if self.ignore.contains(key) {
+//                        break
+//                    }
+//                    
+//                    let mirror: Mirror = Mirror(reflecting: value)
+//                    let subjectType: Any.Type = mirror.subjectType
+//                    if subjectType == File?.self || subjectType == File.self {
+//                        if let file: File = value as? File {
+//                            group.enter()
+//                            if let task: FIRStorageUploadTask = file.save(key, completion: { (meta, error) in
+//                                if let error: Error = error {
+//                                    hasError = error
+//                                    uploadTasks.forEach({ (_, task) in
+//                                        task.cancel()
+//                                    })
+//                                    group.leave()
+//                                    return
+//                                }
+//                                group.leave()
+//                            }) {
+//                                uploadTasks[key] = task
+//                            }
+//                        }
+//                    }
+//                }
+//                
+//                let workItem: DispatchWorkItem = DispatchWorkItem {
+//                    for (key, value) in Mirror(reflecting: self).children {
+//                        
+//                        guard let key: String = key else {
+//                            break
+//                        }
+//                        
+//                        if self.ignore.contains(key) {
+//                            break
+//                        }
+//                        
+//                        let mirror: Mirror = Mirror(reflecting: value)
+//                        let subjectType: Any.Type = mirror.subjectType
+//                        if subjectType == File?.self || subjectType == File.self {
+//                            if let file: File = value as? File {
+//                                group.enter()
+//                                if let task: FIRStorageUploadTask = file.save(key, completion: { (meta, error) in
+//                                    if let error: Error = error {
+//                                        hasError = error
+//                                        uploadTasks.forEach({ (task) in
+//                                            task.cancel()
+//                                        })
+//                                        group.leave()
+//                                        return
+//                                    }
+//                                    group.leave()
+//                                }) {
+//                                    uploadTasks.append(task)
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//                
+//                self.uploadQueue.async(group: group, execute: workItem)
+//                group.notify(queue: DispatchQueue.main, execute: {
+//                    block?(hasError)
+//                })
+//                switch group.wait(timeout: .now() + Double(Int64(4 * Double(NSEC_PER_SEC)))) {
+//                case .success: break
+//                case .timedOut:
+//                    uploadTasks.forEach({ (_, task) in
+//                        task.cancel()
+//                    })
+//                    let error: ObjectError = ObjectError(kind: .timeout, description: "Save the file timeout.")
+//                    block?(error)
+//                }
+//                return uploadTasks
+//            }
         }
         
         // MARK: - Transaction
