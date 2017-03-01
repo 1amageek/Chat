@@ -102,8 +102,18 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
                         return
                     }
                     
+                    if let chatRoom: Room = self?.realm.objects(Room.self).filter("id == %@", room.id).first {
+                        if chatRoom.updatedAt <= chatRoom.updatedAt {
+                            return
+                        }
+                    }
+                    
                     try! self?.realm.write {
                         let chatRoom: Room = Room(id: room.id, name: room.name!)
+                        chatRoom.id = room.id
+                        chatRoom.createdAt = room.createdAt
+                        chatRoom.updatedAt = room.updatedAt
+                        chatRoom.name = room.name
                         self?.realm.add(chatRoom, update: true)
                     }
                 })
@@ -128,8 +138,11 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
                             debugPrint(error)
                             return
                         }
-                        print(key)
-                        // TODO: connect Realm
+                        if let chatRoom: Room = self?.realm.objects(Room.self).filter("id == %@", key).first {
+                            try! self?.realm.write {
+                                self?.realm.delete(chatRoom)
+                            }
+                        }
                     })
                 })
                 

@@ -8,6 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		004EE6D7438F0A18E42698FE /* Pods_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49DF17CD7A18B1A75B9AA0B /* Pods_Messenger.framework */; };
+		123C27771E65B11700A2655F /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27761E65B11700A2655F /* Template.swift */; };
+		123C27791E65B26D00A2655F /* TemplateContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27781E65B26D00A2655F /* TemplateContent.swift */; };
+		123C277F1E65B7E600A2655F /* Salada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C277A1E65B7E600A2655F /* Salada.swift */; };
+		123C27801E65B7E600A2655F /* Salada+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C277B1E65B7E600A2655F /* Salada+File.swift */; };
+		123C27811E65B7E600A2655F /* Salada+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C277C1E65B7E600A2655F /* Salada+Datasource.swift */; };
+		123C27821E65B7E600A2655F /* Salada+Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C277D1E65B7E600A2655F /* Salada+Relation.swift */; };
+		123C27831E65B7E600A2655F /* Referenceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C277E1E65B7E600A2655F /* Referenceable.swift */; };
+		123C278D1E65B82B00A2655F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27851E65B82B00A2655F /* CameraViewController.swift */; };
+		123C278E1E65B82B00A2655F /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 123C27861E65B82B00A2655F /* Camera.storyboard */; };
+		123C278F1E65B82B00A2655F /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27871E65B82B00A2655F /* Camera.swift */; };
+		123C27901E65B82B00A2655F /* CapturePhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27881E65B82B00A2655F /* CapturePhotoDelegate.swift */; };
+		123C27911E65B82B00A2655F /* Camera+Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27891E65B82B00A2655F /* Camera+Photo.swift */; };
+		123C27921E65B82B00A2655F /* Camera+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C278A1E65B82B00A2655F /* Camera+Video.swift */; };
+		123C27931E65B82B00A2655F /* Camera+PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C278B1E65B82B00A2655F /* Camera+PreviewView.swift */; };
+		123C27941E65B82B00A2655F /* Camera+TriggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C278C1E65B82B00A2655F /* Camera+TriggerView.swift */; };
+		123C27961E65D71D00A2655F /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27951E65D71C00A2655F /* Transfer.swift */; };
 		124AB5B91E52E21700E5FF18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5B81E52E21700E5FF18 /* AppDelegate.swift */; };
 		124AB5BE1E52E21700E5FF18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 124AB5BC1E52E21700E5FF18 /* Main.storyboard */; };
 		124AB5C01E52E21700E5FF18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124AB5BF1E52E21700E5FF18 /* Assets.xcassets */; };
@@ -28,11 +44,6 @@
 		124AB5E11E52E53200E5FF18 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270A1E41E3F358F0037B2E9 /* ChatViewController.swift */; };
 		124AB5E21E52E53200E5FF18 /* ChatViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12881F741E3FA652004107CF /* ChatViewDataSource.swift */; };
 		124AB5E31E52E53200E5FF18 /* ChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270A1E61E3F359D0037B2E9 /* ChatViewCell.swift */; };
-		124AB5E41E52E57F00E5FF18 /* Salada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5A21E52D8D800E5FF18 /* Salada.swift */; };
-		124AB5E51E52E57F00E5FF18 /* Salada+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5A31E52D8D800E5FF18 /* Salada+File.swift */; };
-		124AB5E61E52E57F00E5FF18 /* Salada+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5A41E52D8D800E5FF18 /* Salada+Datasource.swift */; };
-		124AB5E71E52E57F00E5FF18 /* Salada+Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5A51E52D8D800E5FF18 /* Salada+Relation.swift */; };
-		124AB5E81E52E57F00E5FF18 /* Referenceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5A61E52D8D800E5FF18 /* Referenceable.swift */; };
 		124AB5EB1E52F1A300E5FF18 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 124AB5EA1E52F1A300E5FF18 /* GoogleService-Info.plist */; };
 		124AB5ED1E53106400E5FF18 /* Firebase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5EC1E53106400E5FF18 /* Firebase+.swift */; };
 		124AB5EF1E5311A700E5FF18 /* Transcript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5EE1E5311A700E5FF18 /* Transcript.swift */; };
@@ -43,6 +54,7 @@
 		124AB5F61E53124000E5FF18 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5F21E5311CB00E5FF18 /* User.swift */; };
 		1270A1D81E3F34E00037B2E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1270A1D71E3F34E00037B2E9 /* Assets.xcassets */; };
 		1270A1DB1E3F34E00037B2E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1270A1D91E3F34E00037B2E9 /* LaunchScreen.storyboard */; };
+		127D4B8B1E65A7BA00657038 /* ChatTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127D4B8A1E65A7BA00657038 /* ChatTemplateCell.swift */; };
 		128EBA0A1E55522B00B56BFB /* ChatSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EBA091E55522B00B56BFB /* ChatSessionController.swift */; };
 		128EBA0C1E556A9600B56BFB /* ChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EBA0B1E556A9600B56BFB /* ChatTextCell.swift */; };
 		128EBA141E559AD600B56BFB /* Antenna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128EBA101E559AD600B56BFB /* Antenna.swift */; };
@@ -56,14 +68,25 @@
 /* Begin PBXFileReference section */
 		122695D61E40275E006128D9 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		122695D81E402B99006128D9 /* ChatToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatToolBar.swift; sourceTree = "<group>"; };
+		123C27761E65B11700A2655F /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		123C27781E65B26D00A2655F /* TemplateContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateContent.swift; sourceTree = "<group>"; };
+		123C277A1E65B7E600A2655F /* Salada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salada.swift; sourceTree = "<group>"; };
+		123C277B1E65B7E600A2655F /* Salada+File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+File.swift"; sourceTree = "<group>"; };
+		123C277C1E65B7E600A2655F /* Salada+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Datasource.swift"; sourceTree = "<group>"; };
+		123C277D1E65B7E600A2655F /* Salada+Relation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Relation.swift"; sourceTree = "<group>"; };
+		123C277E1E65B7E600A2655F /* Referenceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Referenceable.swift; sourceTree = "<group>"; };
+		123C27851E65B82B00A2655F /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		123C27861E65B82B00A2655F /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
+		123C27871E65B82B00A2655F /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		123C27881E65B82B00A2655F /* CapturePhotoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturePhotoDelegate.swift; sourceTree = "<group>"; };
+		123C27891E65B82B00A2655F /* Camera+Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Camera+Photo.swift"; sourceTree = "<group>"; };
+		123C278A1E65B82B00A2655F /* Camera+Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Camera+Video.swift"; sourceTree = "<group>"; };
+		123C278B1E65B82B00A2655F /* Camera+PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Camera+PreviewView.swift"; sourceTree = "<group>"; };
+		123C278C1E65B82B00A2655F /* Camera+TriggerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Camera+TriggerView.swift"; sourceTree = "<group>"; };
+		123C27951E65D71C00A2655F /* Transfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		124AB5991E52A6D100E5FF18 /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomViewController.swift; path = ../Chat/RoomViewController.swift; sourceTree = "<group>"; };
 		124AB59B1E52AC2100E5FF18 /* RoomViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomViewCell.swift; path = ../Chat/RoomViewCell.swift; sourceTree = "<group>"; };
 		124AB59D1E52CB3300E5FF18 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageViewController.swift; path = ../Chat/MessageViewController.swift; sourceTree = "<group>"; };
-		124AB5A21E52D8D800E5FF18 /* Salada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salada.swift; sourceTree = "<group>"; };
-		124AB5A31E52D8D800E5FF18 /* Salada+File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+File.swift"; sourceTree = "<group>"; };
-		124AB5A41E52D8D800E5FF18 /* Salada+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Datasource.swift"; sourceTree = "<group>"; };
-		124AB5A51E52D8D800E5FF18 /* Salada+Relation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Relation.swift"; sourceTree = "<group>"; };
-		124AB5A61E52D8D800E5FF18 /* Referenceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Referenceable.swift; sourceTree = "<group>"; };
 		124AB5B61E52E21700E5FF18 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		124AB5B81E52E21700E5FF18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		124AB5BD1E52E21700E5FF18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,6 +106,7 @@
 		1270A1E21E3F357E0037B2E9 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		1270A1E41E3F358F0037B2E9 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		1270A1E61E3F359D0037B2E9 /* ChatViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewCell.swift; sourceTree = "<group>"; };
+		127D4B8A1E65A7BA00657038 /* ChatTemplateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTemplateCell.swift; sourceTree = "<group>"; };
 		12881F741E3FA652004107CF /* ChatViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewDataSource.swift; sourceTree = "<group>"; };
 		128EBA091E55522B00B56BFB /* ChatSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSessionController.swift; sourceTree = "<group>"; };
 		128EBA0B1E556A9600B56BFB /* ChatTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTextCell.swift; sourceTree = "<group>"; };
@@ -120,14 +144,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		123C27841E65B7FC00A2655F /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				123C27851E65B82B00A2655F /* CameraViewController.swift */,
+				123C27861E65B82B00A2655F /* Camera.storyboard */,
+				123C27871E65B82B00A2655F /* Camera.swift */,
+				123C27881E65B82B00A2655F /* CapturePhotoDelegate.swift */,
+				123C27891E65B82B00A2655F /* Camera+Photo.swift */,
+				123C278A1E65B82B00A2655F /* Camera+Video.swift */,
+				123C278B1E65B82B00A2655F /* Camera+PreviewView.swift */,
+				123C278C1E65B82B00A2655F /* Camera+TriggerView.swift */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
 		124AB5A11E52D8C700E5FF18 /* Salada */ = {
 			isa = PBXGroup;
 			children = (
-				124AB5A21E52D8D800E5FF18 /* Salada.swift */,
-				124AB5A31E52D8D800E5FF18 /* Salada+File.swift */,
-				124AB5A41E52D8D800E5FF18 /* Salada+Datasource.swift */,
-				124AB5A51E52D8D800E5FF18 /* Salada+Relation.swift */,
-				124AB5A61E52D8D800E5FF18 /* Referenceable.swift */,
+				123C277A1E65B7E600A2655F /* Salada.swift */,
+				123C277B1E65B7E600A2655F /* Salada+File.swift */,
+				123C277C1E65B7E600A2655F /* Salada+Datasource.swift */,
+				123C277D1E65B7E600A2655F /* Salada+Relation.swift */,
+				123C277E1E65B7E600A2655F /* Referenceable.swift */,
 			);
 			name = Salada;
 			path = ../Chat;
@@ -142,8 +181,11 @@
 				124AB59B1E52AC2100E5FF18 /* RoomViewCell.swift */,
 				124AB59D1E52CB3300E5FF18 /* MessageViewController.swift */,
 				128EBA0B1E556A9600B56BFB /* ChatTextCell.swift */,
+				127D4B8A1E65A7BA00657038 /* ChatTemplateCell.swift */,
 				128EBA091E55522B00B56BFB /* ChatSessionController.swift */,
 				124AB5EC1E53106400E5FF18 /* Firebase+.swift */,
+				123C27951E65D71C00A2655F /* Transfer.swift */,
+				123C27841E65B7FC00A2655F /* Camera */,
 				128EBA0F1E559AB700B56BFB /* Antenna */,
 				124AB5A11E52D8C700E5FF18 /* Salada */,
 				124AB5BC1E52E21700E5FF18 /* Main.storyboard */,
@@ -186,6 +228,8 @@
 				12881F741E3FA652004107CF /* ChatViewDataSource.swift */,
 				1270A1E61E3F359D0037B2E9 /* ChatViewCell.swift */,
 				124AB5EE1E5311A700E5FF18 /* Transcript.swift */,
+				123C27761E65B11700A2655F /* Template.swift */,
+				123C27781E65B26D00A2655F /* TemplateContent.swift */,
 				124AB5F01E5311B100E5FF18 /* Room.swift */,
 				124AB5F21E5311CB00E5FF18 /* User.swift */,
 				1270A1D71E3F34E00037B2E9 /* Assets.xcassets */,
@@ -325,6 +369,7 @@
 				124AB5EB1E52F1A300E5FF18 /* GoogleService-Info.plist in Resources */,
 				124AB5C01E52E21700E5FF18 /* Assets.xcassets in Resources */,
 				124AB5BE1E52E21700E5FF18 /* Main.storyboard in Resources */,
+				123C278E1E65B82B00A2655F /* Camera.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,30 +483,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				124AB5DF1E52E53200E5FF18 /* ChatToolBar.swift in Sources */,
-				124AB5E41E52E57F00E5FF18 /* Salada.swift in Sources */,
+				123C27961E65D71D00A2655F /* Transfer.swift in Sources */,
+				123C27821E65B7E600A2655F /* Salada+Relation.swift in Sources */,
 				128EBA141E559AD600B56BFB /* Antenna.swift in Sources */,
 				128EBA0A1E55522B00B56BFB /* ChatSessionController.swift in Sources */,
 				124AB5D01E52E24D00E5FF18 /* RoomViewCell.swift in Sources */,
+				123C27911E65B82B00A2655F /* Camera+Photo.swift in Sources */,
 				124AB5CF1E52E24D00E5FF18 /* RoomViewController.swift in Sources */,
 				124AB5F41E53124000E5FF18 /* Transcript.swift in Sources */,
 				124AB5ED1E53106400E5FF18 /* Firebase+.swift in Sources */,
 				128EBA191E56F46700B56BFB /* ViewController.swift in Sources */,
 				124AB5E31E52E53200E5FF18 /* ChatViewCell.swift in Sources */,
 				124AB5E01E52E53200E5FF18 /* ChatView.swift in Sources */,
-				124AB5E81E52E57F00E5FF18 /* Referenceable.swift in Sources */,
+				127D4B8B1E65A7BA00657038 /* ChatTemplateCell.swift in Sources */,
 				124AB5DE1E52E53200E5FF18 /* Chat.swift in Sources */,
 				128EBA171E559AD600B56BFB /* Communicable+.swift in Sources */,
 				128EBA0C1E556A9600B56BFB /* ChatTextCell.swift in Sources */,
-				124AB5E61E52E57F00E5FF18 /* Salada+Datasource.swift in Sources */,
 				124AB5D21E52E52B00E5FF18 /* MessageViewController.swift in Sources */,
 				124AB5B91E52E21700E5FF18 /* AppDelegate.swift in Sources */,
 				124AB5E21E52E53200E5FF18 /* ChatViewDataSource.swift in Sources */,
 				124AB5F51E53124000E5FF18 /* Room.swift in Sources */,
-				124AB5E51E52E57F00E5FF18 /* Salada+File.swift in Sources */,
 				124AB5E11E52E53200E5FF18 /* ChatViewController.swift in Sources */,
-				124AB5E71E52E57F00E5FF18 /* Salada+Relation.swift in Sources */,
 				128EBA161E559AD600B56BFB /* Communicable.swift in Sources */,
+				123C278F1E65B82B00A2655F /* Camera.swift in Sources */,
+				123C27831E65B7E600A2655F /* Referenceable.swift in Sources */,
+				123C27941E65B82B00A2655F /* Camera+TriggerView.swift in Sources */,
+				123C27931E65B82B00A2655F /* Camera+PreviewView.swift in Sources */,
+				123C27921E65B82B00A2655F /* Camera+Video.swift in Sources */,
 				124AB5F61E53124000E5FF18 /* User.swift in Sources */,
+				123C27801E65B7E600A2655F /* Salada+File.swift in Sources */,
+				123C27811E65B7E600A2655F /* Salada+Datasource.swift in Sources */,
+				123C27901E65B82B00A2655F /* CapturePhotoDelegate.swift in Sources */,
+				123C278D1E65B82B00A2655F /* CameraViewController.swift in Sources */,
+				123C277F1E65B7E600A2655F /* Salada.swift in Sources */,
 				128EBA151E559AD600B56BFB /* Beacon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,10 +527,12 @@
 				124AB5DC1E52E53100E5FF18 /* ChatViewCell.swift in Sources */,
 				124AB5DB1E52E53100E5FF18 /* ChatViewDataSource.swift in Sources */,
 				124AB5D61E52E53100E5FF18 /* AppDelegate.swift in Sources */,
+				123C27791E65B26D00A2655F /* TemplateContent.swift in Sources */,
 				124AB5D71E52E53100E5FF18 /* Chat.swift in Sources */,
 				124AB5D91E52E53100E5FF18 /* ChatView.swift in Sources */,
 				124AB5F11E5311B100E5FF18 /* Room.swift in Sources */,
 				124AB5EF1E5311A700E5FF18 /* Transcript.swift in Sources */,
+				123C27771E65B11700A2655F /* Template.swift in Sources */,
 				124AB5DA1E52E53100E5FF18 /* ChatViewController.swift in Sources */,
 				124AB5F31E5311CB00E5FF18 /* User.swift in Sources */,
 				124AB5D81E52E53100E5FF18 /* ChatToolBar.swift in Sources */,
@@ -520,6 +576,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 88ACA86N96;
 				INFOPLIST_FILE = Messenger/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = team.stamp.Messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -534,6 +591,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 88ACA86N96;
 				INFOPLIST_FILE = Messenger/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = team.stamp.Messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";

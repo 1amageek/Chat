@@ -53,7 +53,6 @@ public class Salada {
             case null
             
             init(key: String, value: Any) {
-                print(key, value)
                 switch value.self {
                 case is String:         if let value: String        = value as? String      { self = .string(key, value); return }
                 case is URL:            if let value: URL           = value as? URL         { self = .url(key, value.absoluteString, value); return }
@@ -74,7 +73,6 @@ public class Salada {
             
             init(key: String, mirror: Mirror, snapshot: [AnyHashable: Any]) {
                 let subjectType: Any.Type = mirror.subjectType
-                print(subjectType)
                 if subjectType == String.self || subjectType == String?.self {
                     if let value: String = snapshot[key] as? String {
                         self = .string(key, value)
@@ -528,24 +526,14 @@ public class Salada {
                     }
                     
                     // Relation
-                    // TODO
+                    // TODO:
                     if let _: Relation = value as? Relation {
                         if let change: [NSKeyValueChangeKey: Any] = change as [NSKeyValueChangeKey: Any]? {
                             
                             let new: Relation = change[.newKey] as! Relation
                             let old: Relation = change[.oldKey] as! Relation
                             
-                            //                            // Added
-                            //                            new.subtracting(old).forEach({ (id) in
-                            //                                updateValue(keyPath, child: id, value: true)
-                            //                            })
-                            //
-                            //                            // Remove
-                            //                            old.subtracting(new).forEach({ (id) in
-                            //                                updateValue(keyPath, child: id, value: nil)
-                            //                            })
-                            print(new)
-                            print(old)
+                            // TODO:
                         }
                         return
                     }
@@ -719,18 +707,6 @@ public class Salada {
             }
             let _self: String = String(describing: Mirror(reflecting: self).subjectType).components(separatedBy: ".").first!
             return "\(_self) {\n\(values)}"
-        }
-        
-        public override func willChange(_ changeKind: NSKeyValueChange, valuesAt indexes: IndexSet, forKey key: String) {
-            super.willChange(changeKind, valuesAt: indexes, forKey: key)
-            print(changeKind, indexes, key)
-        }
-        
-        public override func didChange(_ changeKind: NSKeyValueChange, valuesAt indexes: IndexSet, forKey key: String) {
-            print("changeKind", changeKind, indexes, key, self.value(forKeyPath: key))
-            
-            super.didChange(changeKind, valuesAt: IndexSet(), forKey: key)
-            
         }
         
     }

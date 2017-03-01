@@ -42,6 +42,41 @@ class Firebase {
         
     }
     
+    class Image: Salada.Object {
+        typealias Element = Image
+    }
+    
+    class Video: Salada.Object {
+        typealias Element = Video
+    }
+    
+    class Audio: Salada.Object {
+        typealias Element = Audio
+    }
+    
+    class Location: Salada.Object {
+        typealias Element = Location
+    }
+    
+    class Sticker: Salada.Object {
+        typealias Element = Sticker
+    }
+    
+    class Template: Salada.Object {
+        typealias Element = Template
+        dynamic var templateType: Int = 0
+    }
+    
+    class Card: Salada.Object {
+        typealias Element = Card
+        dynamic var items: Set<String> = []
+    }
+    
+    class CardItem: Salada.Object {
+        typealias Element = CardItem
+        dynamic var image: Salada.File?
+    }
+    
 }
 
 extension Firebase.User {

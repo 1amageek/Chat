@@ -30,6 +30,7 @@ class MessageViewController: ChatViewController {
     
     override func loadView() {
         super.loadView()
+        self.collectionView.register(ChatTemplateCell.self, forCellWithReuseIdentifier: "ChatTemplateCell")
         self.collectionView.register(ChatTextRightCell.self, forCellWithReuseIdentifier: "ChatTextRightCell")
         self.collectionView.register(ChatTextLeftCell.self, forCellWithReuseIdentifier: "ChatTextLeftCell")
     }
@@ -41,6 +42,8 @@ class MessageViewController: ChatViewController {
         fixedSpace.width = 16
         
         self.toolBar.setItems([
+            self.cameraBarButtonItem,
+            self.bookBarButtonItem,
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             self.sendBarButtonItem,
             fixedSpace
@@ -69,9 +72,17 @@ class MessageViewController: ChatViewController {
                         return
                     }
                     
+                    if let transcript: Transcript = self?.realm.objects(Transcript.self).filter("id == %@", message.id).first {
+                        if transcript.updatedAt <= message.updatedAt {
+                            return
+                        }
+                    }
+                    
                     try! self?.realm.write {                        
                         let transcript: Transcript = Transcript()
                         transcript.id = message.id
+                        transcript.createdAt = message.createdAt
+                        transcript.updatedAt = message.updatedAt
                         transcript.text = text
                         transcript.roomID = room.id
                         transcript.userID = userID
@@ -102,8 +113,11 @@ class MessageViewController: ChatViewController {
                             debugPrint(error)
                             return
                         }
-                        print(key)
-                        // TODO: connect Realm
+                        if let transcript: Transcript = self?.realm.objects(Transcript.self).filter("id == %@", key).first {
+                            try! self?.realm.write {
+                                self?.realm.delete(transcript)
+                            }
+                        }
                     })
                 })
                 
@@ -130,6 +144,18 @@ class MessageViewController: ChatViewController {
         return barButtonItem
     }()
     
+    private(set) lazy var cameraBarButtonItem: UIBarButtonItem = {
+        let barButtonItem: UIBarButtonItem = UIBarButtonItem(title: "Camera", style: .plain, target: self, action: #selector(camera))
+        barButtonItem.isEnabled = true
+        return barButtonItem
+    }()
+    
+    private(set) lazy var bookBarButtonItem: UIBarButtonItem = {
+        let barButtonItem: UIBarButtonItem = UIBarButtonItem(title: "Book", style: .plain, target: self, action: #selector(book))
+        barButtonItem.isEnabled = true
+        return barButtonItem
+    }()
+    
     func send() {        
         let text: String = self.toolBar.textView.text
         self.sessionController.send(text: text, realm: self.realm) { [weak self](error) in
@@ -142,6 +168,16 @@ class MessageViewController: ChatViewController {
             self?.layoutToolbar()
             self?.sendBarButtonItem.isEnabled = false
         }
+    }
+    
+    func camera() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Camera", bundle: nil)
+        let viewController: CameraViewController = storyboard.instantiateInitialViewController() as! CameraViewController
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    func book() {
+        
     }
     
     // MARK: - Datasorce

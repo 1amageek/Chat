@@ -335,6 +335,20 @@ extension Datasource: Collection {
         return i + 1
     }
     
+    public var first: String? {
+        if 0 < self.pool.count {
+            return self.pool[startIndex]
+        }
+        return nil
+    }
+    
+    public var last: String? {
+        if 0 < self.pool.count {
+            return self.pool[endIndex - 1]
+        }
+        return nil
+    }
+    
     public subscript(index: Int) -> String {
         return self.pool[index]
     }

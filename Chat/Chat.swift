@@ -21,6 +21,10 @@ class Chat {
         case template
     }
     
+    enum TemplateType: Int {
+        case card
+    }
+    
 }
 
 enum ChatError: Error {
