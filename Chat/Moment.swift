@@ -1,29 +1,22 @@
 //
-//  Transcript.swift
+//  Moment.swift
 //  Chat
 //
-//  Created by 1amageek on 2017/02/14.
+//  Created by 1amageek on 2017/03/06.
 //  Copyright © 2017年 Stamp inc. All rights reserved.
 //
 
 import Foundation
 import RealmSwift
 
-class Transcript: Object {
+class Moment: Object {
     
     dynamic var id: String!
-    
-    /**
-     - SeeAlso: Chat.ContentType
-     */
-    dynamic var contentType: Int = 0
     dynamic var createdAt: Date = Date()
     dynamic var updatedAt: Date = Date()
-    
+    dynamic var startDate: Date = Date()
+    dynamic var endDate: Date = Date()
     dynamic var roomID: String?
-    dynamic var userID: String?
-    dynamic var text: String?
-    dynamic var contentID: String?
     
     override static func primaryKey() -> String? {
         return "id"

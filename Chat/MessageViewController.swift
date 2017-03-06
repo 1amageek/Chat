@@ -30,6 +30,7 @@ class MessageViewController: ChatViewController {
     
     override func loadView() {
         super.loadView()
+        self.collectionView.register(ChatMomentCell.self, forCellWithReuseIdentifier: "ChatMomentCell")
         self.collectionView.register(ChatTemplateCell.self, forCellWithReuseIdentifier: "ChatTemplateCell")
         self.collectionView.register(ChatTextRightCell.self, forCellWithReuseIdentifier: "ChatTextRightCell")
         self.collectionView.register(ChatTextLeftCell.self, forCellWithReuseIdentifier: "ChatTextLeftCell")
@@ -47,94 +48,7 @@ class MessageViewController: ChatViewController {
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             self.sendBarButtonItem,
             fixedSpace
-            ], animated: false)
-        
-        let options: SaladaOptions = SaladaOptions()
-        options.limit = 30
-        options.ascending = false
-        
-        self.datasource = Datasource(parentKey: self.room.id, referenceKey: "messages", options: options, block: { [weak self](changes) in
-
-            guard let room: Room = self?.room else { return }
-            
-            let insertBlock = { (index) in
-                self?.datasource?.observeObject(at: index, block: { (message) in
-                    
-                    guard let message: Firebase.Message = message else {
-                        return
-                    }
-                    
-                    guard let userID: String = message.userID else {
-                        return
-                    }
-                    
-                    guard let text: String = message.text else {
-                        return
-                    }
-                    
-                    if let transcript: Transcript = self?.realm.objects(Transcript.self).filter("id == %@", message.id).first {
-                        if transcript.updatedAt <= message.updatedAt {
-                            return
-                        }
-                    }
-                    
-                    try! self?.realm.write {                        
-                        let transcript: Transcript = Transcript()
-                        transcript.id = message.id
-                        transcript.createdAt = message.createdAt
-                        transcript.updatedAt = message.updatedAt
-                        transcript.text = text
-                        transcript.roomID = room.id
-                        transcript.userID = userID
-                        self?.realm.add(transcript, update: true)
-                    }
-                })
-            }
-            
-            
-            switch changes {
-            case .initial:
-                
-                let count: Int = self?.datasource?.count ?? 0
-                (0..<count).forEach({ (index) in
-                    insertBlock(index)
-                })
-                
-            case .update(let deletions, let insertions, let modifications):
-                
-                
-                insertions.forEach({ (index) in
-                    insertBlock(index)
-                })
-                
-                deletions.forEach({ (index) in
-                    self?.datasource?.removeObject(at: index, cascade: false, block: { (key, error) in
-                        if let error: Error = error {
-                            debugPrint(error)
-                            return
-                        }
-                        if let transcript: Transcript = self?.realm.objects(Transcript.self).filter("id == %@", key).first {
-                            try! self?.realm.write {
-                                self?.realm.delete(transcript)
-                            }
-                        }
-                    })
-                })
-                
-                modifications.forEach({ (index) in
-                    self?.datasource?.observeObject(at: index, block: { (message) in
-                        guard let room: Firebase.Message = message else {
-                            return
-                        }
-                        print(room)
-                        // TODO: Connect Realm
-                    })
-                })
-                
-            case .error(let error):
-                print(error)
-            }
-        })
+            ], animated: false)                
 
     }
     
@@ -203,6 +117,16 @@ class MessageViewController: ChatViewController {
             } else {
                 let cell: ChatTextLeftCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatTextLeftCell", for: indexPath) as! ChatTextLeftCell
                 cell.text = transcript.text
+                return cell
+            }
+        case .moment:
+            if self.user!.uid == transcript.userID {
+                let cell: ChatMomentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatMomentCell", for: indexPath) as! ChatMomentCell
+                cell.momentID = transcript.contentID
+                return cell
+            } else {
+                let cell: ChatMomentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatMomentCell", for: indexPath) as! ChatMomentCell
+                cell.momentID = transcript.contentID
                 return cell
             }
         default:

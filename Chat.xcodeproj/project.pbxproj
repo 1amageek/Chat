@@ -51,6 +51,9 @@
 		125F0AC01E6D21FF00BE2B90 /* Salada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125F0ABC1E6D21FF00BE2B90 /* Salada.swift */; };
 		125F0AC11E6D21FF00BE2B90 /* Salada+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125F0ABD1E6D21FF00BE2B90 /* Salada+Datasource.swift */; };
 		125F0AC21E6D21FF00BE2B90 /* Salada+Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125F0ABE1E6D21FF00BE2B90 /* Salada+Relation.swift */; };
+		125F0AC41E6D4EAD00BE2B90 /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125F0AC31E6D4EAD00BE2B90 /* Moment.swift */; };
+		125F0AC51E6D56D100BE2B90 /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125F0AC31E6D4EAD00BE2B90 /* Moment.swift */; };
+		125F0AC71E6D588A00BE2B90 /* ChatMomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125F0AC61E6D588A00BE2B90 /* ChatMomentCell.swift */; };
 		1270A1D81E3F34E00037B2E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1270A1D71E3F34E00037B2E9 /* Assets.xcassets */; };
 		1270A1DB1E3F34E00037B2E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1270A1D91E3F34E00037B2E9 /* LaunchScreen.storyboard */; };
 		127D4B8B1E65A7BA00657038 /* ChatTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127D4B8A1E65A7BA00657038 /* ChatTemplateCell.swift */; };
@@ -96,6 +99,8 @@
 		125F0ABC1E6D21FF00BE2B90 /* Salada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salada.swift; sourceTree = "<group>"; };
 		125F0ABD1E6D21FF00BE2B90 /* Salada+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Datasource.swift"; sourceTree = "<group>"; };
 		125F0ABE1E6D21FF00BE2B90 /* Salada+Relation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Relation.swift"; sourceTree = "<group>"; };
+		125F0AC31E6D4EAD00BE2B90 /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
+		125F0AC61E6D588A00BE2B90 /* ChatMomentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMomentCell.swift; sourceTree = "<group>"; };
 		1270A1CD1E3F34E00037B2E9 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1270A1D01E3F34E00037B2E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1270A1D71E3F34E00037B2E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -178,6 +183,7 @@
 				124AB59B1E52AC2100E5FF18 /* RoomViewCell.swift */,
 				124AB59D1E52CB3300E5FF18 /* MessageViewController.swift */,
 				128EBA0B1E556A9600B56BFB /* ChatTextCell.swift */,
+				125F0AC61E6D588A00BE2B90 /* ChatMomentCell.swift */,
 				127D4B8A1E65A7BA00657038 /* ChatTemplateCell.swift */,
 				128EBA091E55522B00B56BFB /* ChatSessionController.swift */,
 				124AB5EC1E53106400E5FF18 /* Firebase+.swift */,
@@ -225,6 +231,7 @@
 				12881F741E3FA652004107CF /* ChatViewDataSource.swift */,
 				1270A1E61E3F359D0037B2E9 /* ChatViewCell.swift */,
 				124AB5EE1E5311A700E5FF18 /* Transcript.swift */,
+				125F0AC31E6D4EAD00BE2B90 /* Moment.swift */,
 				123C27761E65B11700A2655F /* Template.swift */,
 				123C27781E65B26D00A2655F /* TemplateContent.swift */,
 				124AB5F01E5311B100E5FF18 /* Room.swift */,
@@ -498,10 +505,12 @@
 				127D4B8B1E65A7BA00657038 /* ChatTemplateCell.swift in Sources */,
 				124AB5DE1E52E53200E5FF18 /* Chat.swift in Sources */,
 				128EBA171E559AD600B56BFB /* Communicable+.swift in Sources */,
+				125F0AC71E6D588A00BE2B90 /* ChatMomentCell.swift in Sources */,
 				128EBA0C1E556A9600B56BFB /* ChatTextCell.swift in Sources */,
 				124AB5D21E52E52B00E5FF18 /* MessageViewController.swift in Sources */,
 				124AB5B91E52E21700E5FF18 /* AppDelegate.swift in Sources */,
 				124AB5E21E52E53200E5FF18 /* ChatViewDataSource.swift in Sources */,
+				125F0AC51E6D56D100BE2B90 /* Moment.swift in Sources */,
 				124AB5F51E53124000E5FF18 /* Room.swift in Sources */,
 				124AB5E11E52E53200E5FF18 /* ChatViewController.swift in Sources */,
 				128EBA161E559AD600B56BFB /* Communicable.swift in Sources */,
@@ -531,6 +540,7 @@
 				123C27771E65B11700A2655F /* Template.swift in Sources */,
 				124AB5DA1E52E53100E5FF18 /* ChatViewController.swift in Sources */,
 				124AB5F31E5311CB00E5FF18 /* User.swift in Sources */,
+				125F0AC41E6D4EAD00BE2B90 /* Moment.swift in Sources */,
 				124AB5D81E52E53100E5FF18 /* ChatToolBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
