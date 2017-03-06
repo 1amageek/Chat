@@ -17,6 +17,7 @@ class Chat {
         case audio
         case location
         case sticker
+        case imageMap
         case moment
         case template
     }

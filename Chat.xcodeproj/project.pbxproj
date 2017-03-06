@@ -19,11 +19,6 @@
 		123C27931E65B82B00A2655F /* Camera+PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C278B1E65B82B00A2655F /* Camera+PreviewView.swift */; };
 		123C27941E65B82B00A2655F /* Camera+TriggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C278C1E65B82B00A2655F /* Camera+TriggerView.swift */; };
 		123C27961E65D71D00A2655F /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27951E65D71C00A2655F /* Transfer.swift */; };
-		123C27AF1E66E47200A2655F /* Salada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27AA1E66E47200A2655F /* Salada.swift */; };
-		123C27B01E66E47200A2655F /* Salada+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27AB1E66E47200A2655F /* Salada+File.swift */; };
-		123C27B11E66E47200A2655F /* Salada+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27AC1E66E47200A2655F /* Salada+Datasource.swift */; };
-		123C27B21E66E47200A2655F /* Salada+Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27AD1E66E47200A2655F /* Salada+Relation.swift */; };
-		123C27B31E66E47200A2655F /* Referenceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123C27AE1E66E47200A2655F /* Referenceable.swift */; };
 		124AB5B91E52E21700E5FF18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5B81E52E21700E5FF18 /* AppDelegate.swift */; };
 		124AB5BE1E52E21700E5FF18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 124AB5BC1E52E21700E5FF18 /* Main.storyboard */; };
 		124AB5C01E52E21700E5FF18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124AB5BF1E52E21700E5FF18 /* Assets.xcassets */; };
@@ -52,6 +47,10 @@
 		124AB5F41E53124000E5FF18 /* Transcript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5EE1E5311A700E5FF18 /* Transcript.swift */; };
 		124AB5F51E53124000E5FF18 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5F01E5311B100E5FF18 /* Room.swift */; };
 		124AB5F61E53124000E5FF18 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AB5F21E5311CB00E5FF18 /* User.swift */; };
+		125F0ABF1E6D21FF00BE2B90 /* Referenceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125F0ABB1E6D21FF00BE2B90 /* Referenceable.swift */; };
+		125F0AC01E6D21FF00BE2B90 /* Salada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125F0ABC1E6D21FF00BE2B90 /* Salada.swift */; };
+		125F0AC11E6D21FF00BE2B90 /* Salada+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125F0ABD1E6D21FF00BE2B90 /* Salada+Datasource.swift */; };
+		125F0AC21E6D21FF00BE2B90 /* Salada+Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125F0ABE1E6D21FF00BE2B90 /* Salada+Relation.swift */; };
 		1270A1D81E3F34E00037B2E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1270A1D71E3F34E00037B2E9 /* Assets.xcassets */; };
 		1270A1DB1E3F34E00037B2E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1270A1D91E3F34E00037B2E9 /* LaunchScreen.storyboard */; };
 		127D4B8B1E65A7BA00657038 /* ChatTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127D4B8A1E65A7BA00657038 /* ChatTemplateCell.swift */; };
@@ -79,11 +78,6 @@
 		123C278B1E65B82B00A2655F /* Camera+PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Camera+PreviewView.swift"; sourceTree = "<group>"; };
 		123C278C1E65B82B00A2655F /* Camera+TriggerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Camera+TriggerView.swift"; sourceTree = "<group>"; };
 		123C27951E65D71C00A2655F /* Transfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
-		123C27AA1E66E47200A2655F /* Salada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salada.swift; sourceTree = "<group>"; };
-		123C27AB1E66E47200A2655F /* Salada+File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+File.swift"; sourceTree = "<group>"; };
-		123C27AC1E66E47200A2655F /* Salada+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Datasource.swift"; sourceTree = "<group>"; };
-		123C27AD1E66E47200A2655F /* Salada+Relation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Relation.swift"; sourceTree = "<group>"; };
-		123C27AE1E66E47200A2655F /* Referenceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Referenceable.swift; sourceTree = "<group>"; };
 		124AB5991E52A6D100E5FF18 /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomViewController.swift; path = ../Chat/RoomViewController.swift; sourceTree = "<group>"; };
 		124AB59B1E52AC2100E5FF18 /* RoomViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomViewCell.swift; path = ../Chat/RoomViewCell.swift; sourceTree = "<group>"; };
 		124AB59D1E52CB3300E5FF18 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageViewController.swift; path = ../Chat/MessageViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +92,10 @@
 		124AB5EE1E5311A700E5FF18 /* Transcript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transcript.swift; sourceTree = "<group>"; };
 		124AB5F01E5311B100E5FF18 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		124AB5F21E5311CB00E5FF18 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		125F0ABB1E6D21FF00BE2B90 /* Referenceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Referenceable.swift; sourceTree = "<group>"; };
+		125F0ABC1E6D21FF00BE2B90 /* Salada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Salada.swift; sourceTree = "<group>"; };
+		125F0ABD1E6D21FF00BE2B90 /* Salada+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Datasource.swift"; sourceTree = "<group>"; };
+		125F0ABE1E6D21FF00BE2B90 /* Salada+Relation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Salada+Relation.swift"; sourceTree = "<group>"; };
 		1270A1CD1E3F34E00037B2E9 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1270A1D01E3F34E00037B2E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1270A1D71E3F34E00037B2E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,11 +160,10 @@
 		124AB5A11E52D8C700E5FF18 /* Salada */ = {
 			isa = PBXGroup;
 			children = (
-				123C27AA1E66E47200A2655F /* Salada.swift */,
-				123C27AB1E66E47200A2655F /* Salada+File.swift */,
-				123C27AC1E66E47200A2655F /* Salada+Datasource.swift */,
-				123C27AD1E66E47200A2655F /* Salada+Relation.swift */,
-				123C27AE1E66E47200A2655F /* Referenceable.swift */,
+				125F0ABB1E6D21FF00BE2B90 /* Referenceable.swift */,
+				125F0ABC1E6D21FF00BE2B90 /* Salada.swift */,
+				125F0ABD1E6D21FF00BE2B90 /* Salada+Datasource.swift */,
+				125F0ABE1E6D21FF00BE2B90 /* Salada+Relation.swift */,
 			);
 			name = Salada;
 			path = ../Chat;
@@ -482,21 +479,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				123C27B31E66E47200A2655F /* Referenceable.swift in Sources */,
+				125F0ABF1E6D21FF00BE2B90 /* Referenceable.swift in Sources */,
+				125F0AC21E6D21FF00BE2B90 /* Salada+Relation.swift in Sources */,
 				124AB5DF1E52E53200E5FF18 /* ChatToolBar.swift in Sources */,
-				123C27B21E66E47200A2655F /* Salada+Relation.swift in Sources */,
 				123C27961E65D71D00A2655F /* Transfer.swift in Sources */,
 				128EBA141E559AD600B56BFB /* Antenna.swift in Sources */,
 				128EBA0A1E55522B00B56BFB /* ChatSessionController.swift in Sources */,
 				124AB5D01E52E24D00E5FF18 /* RoomViewCell.swift in Sources */,
 				123C27911E65B82B00A2655F /* Camera+Photo.swift in Sources */,
+				125F0AC11E6D21FF00BE2B90 /* Salada+Datasource.swift in Sources */,
 				124AB5CF1E52E24D00E5FF18 /* RoomViewController.swift in Sources */,
-				123C27B11E66E47200A2655F /* Salada+Datasource.swift in Sources */,
 				124AB5F41E53124000E5FF18 /* Transcript.swift in Sources */,
 				124AB5ED1E53106400E5FF18 /* Firebase+.swift in Sources */,
 				128EBA191E56F46700B56BFB /* ViewController.swift in Sources */,
 				124AB5E31E52E53200E5FF18 /* ChatViewCell.swift in Sources */,
 				124AB5E01E52E53200E5FF18 /* ChatView.swift in Sources */,
+				125F0AC01E6D21FF00BE2B90 /* Salada.swift in Sources */,
 				127D4B8B1E65A7BA00657038 /* ChatTemplateCell.swift in Sources */,
 				124AB5DE1E52E53200E5FF18 /* Chat.swift in Sources */,
 				128EBA171E559AD600B56BFB /* Communicable+.swift in Sources */,
@@ -513,8 +511,6 @@
 				123C27921E65B82B00A2655F /* Camera+Video.swift in Sources */,
 				124AB5F61E53124000E5FF18 /* User.swift in Sources */,
 				123C27901E65B82B00A2655F /* CapturePhotoDelegate.swift in Sources */,
-				123C27AF1E66E47200A2655F /* Salada.swift in Sources */,
-				123C27B01E66E47200A2655F /* Salada+File.swift in Sources */,
 				123C278D1E65B82B00A2655F /* CameraViewController.swift in Sources */,
 				128EBA151E559AD600B56BFB /* Beacon.swift in Sources */,
 			);

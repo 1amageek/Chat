@@ -52,7 +52,7 @@ class ChatToolBar: UIView {
                                 y: textViewInset.top,
                                 width: constraintSize.width,
                                 height: textViewSize.height)
-        
+        toolbar.sizeToFit()
         toolbar.frame = CGRect(x: 0,
                                y: textView.frame.maxY + textViewInset.bottom,
                                width: self.bounds.width,
@@ -88,6 +88,7 @@ class ChatToolBar: UIView {
     
     private(set) lazy var toolbar: Toolbar = {
         var toolbar: Toolbar = Toolbar()
+        toolbar.sizeToFit()
         return toolbar
     }()
     

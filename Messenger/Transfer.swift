@@ -14,6 +14,8 @@ class Transfer {
     
     static let shared: Transfer = Transfer()
     
+    var userID: String?
+    
     let sessionQueue = DispatchQueue(label: "transfer_session_queue", attributes: [], target: nil)
     
     let imageManager: PHCachingImageManager = PHCachingImageManager()
@@ -22,7 +24,12 @@ class Transfer {
     
     let compressionRate: CGFloat = 0.75
     
-    func upload(_ item: Item) {
+    func upload(_ item: Item, moment: Firebase.Moment? = nil, block: ((FIRDatabaseReference?, Error?) -> Void)?) {
+        
+        guard let userID: String = self.userID else {
+            print("Transfer required userID.")
+            return
+        }
         
         self.sessionQueue.async {
             let options: PHFetchOptions = PHFetchOptions()
@@ -45,7 +52,16 @@ class Transfer {
                     }
                     let data: Data = UIImageJPEGRepresentation(image, self.compressionRate)!
                     let file: Salada.File = Salada.File(data: data)
+                    let img: Firebase.Image = Firebase.Image()
+                    img.userID = userID
+                    img.file = file
+                    item.task = img.save({ (ref, error) in
+                        moment?.images.insert(ref!.key)
+                        block?(ref, error)
+                    })["file"]
+
                 })
+                
             case .video: break
             case .audio: break
             case .unknown: break
@@ -60,14 +76,36 @@ class Transfer {
 }
 
 extension Transfer {
-    class Item {
+    class Item: Hashable {
         let localIdentifier: String
-        let progress: Progress = Progress()
         var requestID: PHImageRequestID?
+        var progressBlock: ((Progress?) -> Void)?
+        
+        var task: FIRStorageUploadTask? {
+            didSet {
+                _ = task?.observe(.progress, handler: { [weak self](snapshot) in
+                    self?.progressBlock?(snapshot.progress)
+                })
+            }
+        }
         
         init(localIdentifier: String) {
             self.localIdentifier = localIdentifier
         }
         
+        deinit {
+            self.task?.removeAllObservers()
+        }
+        
     }
+}
+
+extension Transfer.Item {
+    var hashValue: Int {
+        return self.localIdentifier.hash
+    }
+}
+
+func == (lhs: Transfer.Item, rhs: Transfer.Item) -> Bool {
+    return lhs.localIdentifier == rhs.localIdentifier
 }

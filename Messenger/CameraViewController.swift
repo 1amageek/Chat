@@ -12,6 +12,19 @@ import Photos
 
 class CameraViewController: UIViewController {
     
+    var room: Room? {
+        didSet {
+            if let room: Room = room {
+                if self.moment == nil {
+                    let moment: Firebase.Moment = Firebase.Moment()
+                    moment.roomID = room.id
+                    moment.startDate = Date()
+                    self.moment = moment
+                }
+            }
+        }
+    }
+    
     @IBOutlet weak var flashButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     
@@ -52,6 +65,14 @@ class CameraViewController: UIViewController {
         self.view.insertSubview(previewView, at: 0)
         self.view.addSubview(triggerView)
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    private var uploadingItems: [Transfer.Item] = []
+    
+    var moment: Firebase.Moment?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +118,10 @@ class CameraViewController: UIViewController {
         // Photo
         self.triggerView.capture = { [weak self] in
             
+            guard var uploadingItems: [Transfer.Item] = self?.uploadingItems else {
+                return
+            }
+            
             self?.flashButton.isHidden = true
             self?.cameraButton.isHidden = true
             
@@ -109,7 +134,17 @@ class CameraViewController: UIViewController {
                 if let localIdentifier: String = localIdentifier {
                     
                     let item: Transfer.Item = Transfer.Item(localIdentifier: localIdentifier)
-                    Transfer.shared.upload(item)
+                    uploadingItems.append(item)
+                    Transfer.shared.upload(item, moment: self?.moment, block: { (ref, error) in
+                        if let error: Error = error {
+                            debugPrint(error)
+                            return
+                        }
+                        
+                        if let index: Int = uploadingItems.index(of: item) {
+                            uploadingItems.remove(at: index)
+                        }
+                    })
                 }
                 
                 self?.triggerView.toDefault(animated: false)
@@ -153,6 +188,9 @@ class CameraViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.camera.stopSession()
+        if let moment: Firebase.Moment = self.moment {
+            moment.close()
+        }
     }
     
     override func viewWillLayoutSubviews() {
