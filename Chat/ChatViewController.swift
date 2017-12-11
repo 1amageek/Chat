@@ -7,95 +7,106 @@
 //
 
 import UIKit
+import Toolbar
 
-class ChatViewController: UIViewController, UICollectionViewDelegate {
-    
+class ChatViewController: ViewController, UICollectionViewDelegate {
+
+    var toolbarBottomConstraint: NSLayoutConstraint?
+
     override func loadView() {
         super.loadView()
         self.view.backgroundColor = .white
         self.view.addSubview(collectionView)
-        self.view.addSubview(toolBar)
+        self.view.addSubview(toolbar)
+        self.toolbarBottomConstraint = self.toolbar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
+        self.toolbarBottomConstraint?.isActive = true
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.automaticallyAdjustsScrollViewInsets = false
+        if #available(iOS 11.0, *) {
+            self.collectionView.contentInsetAdjustmentBehavior = .automatic
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
-        layoutToolbar()
         layoutChatView()
         self.collectionView.scrollToBottom(false)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
-    
-    func layoutToolbar() {
-        toolBar.sizeToFit()
-        let toolBarOriginY = self.view.bounds.height - self.toolBar.bounds.height - self.keyboardHeight
-        toolBar.frame = CGRect(x: 0, y: toolBarOriginY, width: self.toolBar.bounds.width, height: self.toolBar.bounds.height)
+
+    override func viewWillLayoutSubviews() {
+        self.collectionView.frame = self.view.bounds
     }
-    
+
     func layoutChatView() {
         var contentInset: UIEdgeInsets = collectionView.contentInset
-        contentInset.top = navigationBarHeight
+        contentInset.top = contentInsetTop
         contentInset.bottom = toolBarHeight
         collectionView.scrollIndicatorInsets = contentInset
-        contentInset.top = navigationBarHeight + 8
+        contentInset.top = contentInsetTop + 8
         contentInset.bottom = toolBarHeight + 8
         collectionView.contentInset = contentInset
     }
-    
+
     // Keyboard
-    
-    private var navigationBarHeight: CGFloat {
+
+    var contentInsetTop: CGFloat {
+        if #available(iOS 11.0, *) {
+            return 0
+        }
         return (self.navigationController?.navigationBar.frame.height ?? 0) + UIApplication.shared.statusBarFrame.height
     }
-    
+
     private var toolBarHeight: CGFloat {
-        return self.keyboardHeight + self.toolBar.bounds.height
+        return self.keyboardHeight + self.toolbar.bounds.height
     }
-    
+
     private var keyboardHeight: CGFloat = 0
-    
-    final func keyboardWillShow(notification: Notification) {
+
+    @objc final func keyboardWillShow(notification: Notification) {
         moveToolbar(up: true, notification: notification)
     }
-    
-    final func keyboardWillHide(notification: Notification) {
+
+    @objc final func keyboardWillHide(notification: Notification) {
         moveToolbar(up: false, notification: notification)
     }
-    
+
+    var propertyAnimator: UIViewPropertyAnimator?
+
     final func moveToolbar(up: Bool, notification: Notification) {
         guard let userInfo = notification.userInfo else {
             return
         }
         let animationDuration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
-        let animationCurve: UIViewAnimationCurve = UIViewAnimationCurve(rawValue: (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).intValue)!
+        //let animationCurve: UIViewAnimationCurve = UIViewAnimationCurve(rawValue: (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).intValue)!
         self.keyboardHeight = up ? (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height : 0
+        self.toolbarBottomConstraint?.constant = -self.keyboardHeight
         
         // Animation
-        UIView.beginAnimations(nil, context: nil)
-        UIView.setAnimationDuration(animationDuration)
-        UIView.setAnimationCurve(animationCurve)
-        layoutToolbar()
-        layoutChatView()
-        UIView.commitAnimations()
+        self.layoutChatView()
+        UIView.animate(withDuration: animationDuration, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+
+            self.view.layoutIfNeeded()
+        }, completion: nil)
         if up {
             self.collectionView.scrollToBottom(true)
         }
     }
 
     // MARK: -
-    
+
     private(set) lazy var collectionView: ChatView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 4
@@ -111,36 +122,23 @@ class ChatViewController: UIViewController, UICollectionViewDelegate {
         view.keyboardDismissMode = .onDrag
         return view
     }()
-    
-    private(set) lazy var toolBar: ChatToolBar = {
-        let toolbar: ChatToolBar = ChatToolBar()
-        toolbar.textView.delegate = self
-        toolbar.sizeToFit()
+
+    private(set) lazy var toolbar: Toolbar = {
+        let toolbar: Toolbar = Toolbar()
+        toolbar.maximumHeight = 100
         return toolbar
     }()
-    
+
 }
 
 extension ChatViewController: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 4
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
-}
 
-extension ChatViewController: UITextViewDelegate {
-    
-    func textViewDidChange(_ textView: UITextView) {
-        layoutToolbar()
-    }
-    
-    func textViewDidChangeSelection(_ textView: UITextView) {
-        textView.scrollRangeToVisible(textView.selectedRange)
-    }
-    
 }

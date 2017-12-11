@@ -66,6 +66,7 @@ class ChatToolBar: UIView {
     
     func setItems(_ items: [UIBarButtonItem]?, animated: Bool) {
         self.toolbar.setItems(items, animated: animated)
+        self.toolbar.setNeedsLayout()
     }
     
     override func sizeToFit() {
